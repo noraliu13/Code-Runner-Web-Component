@@ -103,13 +103,25 @@ class CodeRunner extends HTMLElement {
 	 background: var(--code-bg, rgba(39, 40, 35, 1));
 	 font-family: 'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace !important;
 }
+ .code-knack-playground .input-output-box {
+   display: flex;
+ }
+ .code-knack-playground .code-knack-input .code-knack-input-content {
+	 background: var(--code-bg, rgb(39, 40, 35, 1));
+	 font-family: 'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace !important;
+   outline: none !important;
+	 border-top: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+   overflow-y: auto;
+	 color: var(--text, white);
+}
  .code-knack-playground .code-knack-output {
 	 display: none;
 	 background: var(--bg, #3a3636);
 	 font-family: 'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace !important;
 	 border-top: 1px solid var(--border, rgba(0, 0, 0, 0.1));
 }
- .code-knack-playground .code-knack-output .code-knack-output-title {
+ .code-knack-playground .code-knack-output .code-knack-output-title, 
+ .code-knack-playground .code-knack-input .code-knack-input-title {
 	 color: var(--text, white);
 	 opacity: 0.6;
 	 font-size: 12px;
@@ -192,7 +204,11 @@ class CodeRunner extends HTMLElement {
 <button class="ck-button run-button" code-runner-button><img src="https://lyricat.github.io/code-knack/demo/lib/code-knack/images/icon-play-dark.svg"><span >run</span></button>
 <button class="ck-button copy-button" code-runner-copy-button><img src="https://lyricat.github.io/code-knack/demo/lib/code-knack/images/icon-copy-dark.svg"><span>copy</span></button></div>
   
-</div><div id="codetorun" class="code-knack-text" contenteditable style="/* display: none; */">${this.innerHTML}</div><div id="output_section" class="code-knack-output text-output"><div class="code-knack-output-title">Output</div><pre class="code-knack-output-content" id="result">Loading..<br></pre></div></div></pre>
+</div><div id="codetorun" class="code-knack-text" contenteditable style="/* display: none; */">${this.innerHTML}</div>
+<div class="input-output-box">
+<div id="input_section" class="code-knack-input"><div class="code-knack-input-title">Input</div><textarea class="code-knack-input-content" name="message" rows="10" cols="30"></textarea></div>
+<div id="output_section" class="code-knack-output text-output"><div class="code-knack-output-title">Output</div><pre class="code-knack-output-content" id="result">Loading..<br></pre></div></div></pre>
+      </div>
       </div>
       </div>
       
@@ -295,7 +311,8 @@ async function getData(html_element) {
                     "version": GetVersionForPistonAPI(html_element.getAttribute("language").toLowerCase()),
                     "files": [{
                         "content": editor.getValue()
-                    }]
+                    }],
+                    "stdin": html_element.querySelector(".code-knack-input-content").innerText
                 }),
 
             });
@@ -370,6 +387,9 @@ function handleclick(codeRunner) {
     if (!codeRunner.hasAttribute("custom-compiler")) {
         getData(codeRunner)
     }
+    const input = document.querySelector(".code-knack-input-content");
+    input.setAttribute("readonly","");
+    input.style.background = "background-color: var(--bg, #3a3636)";
 }
 
 
@@ -467,15 +487,15 @@ function CreateAceCodeEditor(html_element, language) {
     }
 
     function SetAceEditor_Mode() {
+        editor.getSession().setMode(`ace/mode/c_cpp`)
+        // let modelist = ace.require('ace/ext/modelist');
+        // if (modelist.modesByName[language] != undefined) {
 
-        let modelist = ace.require('ace/ext/modelist');
-        if (modelist.modesByName[language] != undefined) {
-
-            editor.getSession().setMode(`ace/mode/${language}`)
-        } else {
-            // language was not found
-            console.log(`Code Runner Error: Ace Editor Language Mode Could Not Be Found For ${language.charAt(0).toUpperCase() + language.slice(1)}`)
-        } ////
+        //     editor.getSession().setMode(`ace/mode/${language}`)
+        // } else {
+        //     // language was not found
+        //     console.log(`Code Runner Error: Ace Editor Language Mode Could Not Be Found For ${language.charAt(0).toUpperCase() + language.slice(1)}`)
+        // } ////
     }
     editor.setShowPrintMargin(false);
     //editor.session.setMode(`ace/mode/${GetVersionForPistonAPI(html_element.getAttribute("language").toLowerCase(), "GETNAME")}`);
