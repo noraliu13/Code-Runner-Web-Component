@@ -312,7 +312,7 @@ async function getData(html_element) {
                     "files": [{
                         "content": editor.getValue()
                     }],
-                    "stdin": html_element.querySelector(".code-knack-input-content").innerText
+                    "stdin": html_element.querySelector(".code-knack-input-content").value
                 }),
 
             });
