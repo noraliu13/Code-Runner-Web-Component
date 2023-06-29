@@ -104,21 +104,32 @@ class CodeRunner extends HTMLElement {
 	 font-family: 'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace !important;
 }
  .code-knack-playground .input-output-box {
-   display: flex;
+  display: flex !important;
  }
+ .code-knack-playground .code-knack-input  {
+	 font-family: 'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace !important;
+   width: 50%;
+	 border-top: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+	 color: var(--text, white);
+}
  .code-knack-playground .code-knack-input .code-knack-input-content {
 	 background: var(--code-bg, rgb(39, 40, 35, 1));
-	 font-family: 'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace !important;
-   outline: none !important;
-	 border-top: 1px solid var(--border, rgba(0, 0, 0, 0.1));
-   overflow-y: auto;
 	 color: var(--text, white);
+	 white-space: pre-line;
+	 padding: 8px 12px 8px 20px;
+	 font-size: 14px;
+	 overflow: auto;
+	 white-space: pre-wrap;
+   width:100%;
+   overflow-y: auto;
+   outline: none !important;
 }
  .code-knack-playground .code-knack-output {
 	 display: none;
 	 background: var(--bg, #3a3636);
 	 font-family: 'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace !important;
 	 border-top: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+   width: 50%;
 }
  .code-knack-playground .code-knack-output .code-knack-output-title, 
  .code-knack-playground .code-knack-input .code-knack-input-title {
@@ -206,7 +217,7 @@ class CodeRunner extends HTMLElement {
   
 </div><div id="codetorun" class="code-knack-text" contenteditable style="/* display: none; */">${this.innerHTML}</div>
 <div class="input-output-box">
-<div id="input_section" class="code-knack-input"><div class="code-knack-input-title">Input</div><textarea class="code-knack-input-content" name="message" rows="10" cols="30"></textarea></div>
+<div id="input_section" class="code-knack-input"><div class="code-knack-input-title">Input</div><textarea class="code-knack-input-content" name="input-text" rows="10" cols="30"></textarea></div>
 <div id="output_section" class="code-knack-output text-output"><div class="code-knack-output-title">Output</div><pre class="code-knack-output-content" id="result">Loading..<br></pre></div></div></pre>
       </div>
       </div>
