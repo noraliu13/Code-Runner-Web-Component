@@ -121,6 +121,7 @@ class CodeRunner extends HTMLElement {
 	 overflow: auto;
 	 white-space: pre-wrap;
    width:100%;
+   max-width:100%;
    overflow-y: auto;
    outline: none !important;
 }
@@ -217,7 +218,7 @@ class CodeRunner extends HTMLElement {
   
 </div><div id="codetorun" class="code-knack-text" contenteditable style="/* display: none; */">${this.innerHTML}</div>
 <div class="input-output-box">
-<div id="input_section" class="code-knack-input"><div class="code-knack-input-title">Input</div><textarea class="code-knack-input-content" name="input-text" rows="10" cols="30"></textarea></div>
+<div id="input_section" class="code-knack-input"><div class="code-knack-input-title">Input</div><textarea class="code-knack-input-content" name="input-text" rows="10" cols="30" >${this.getAttribute("input")}</textarea></div>
 <div id="output_section" class="code-knack-output text-output"><div class="code-knack-output-title">Output</div><pre class="code-knack-output-content" id="result">Loading..<br></pre></div></div></pre>
       </div>
       </div>
