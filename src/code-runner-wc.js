@@ -110,6 +110,7 @@ class CodeRunner extends HTMLElement {
 	 font-family: 'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace !important;
    width: 50%;
 	 border-top: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+	 border-right: 1px solid var(--border, rgba(0, 0, 0, 0.1));
 	 color: var(--text, white);
 }
  .code-knack-playground .code-knack-input .code-knack-input-content {
@@ -120,10 +121,11 @@ class CodeRunner extends HTMLElement {
 	 font-size: 14px;
 	 overflow: auto;
 	 white-space: pre-wrap;
-   width:100%;
+   min-width:100%;
    max-width:100%;
    overflow-y: auto;
    outline: none !important;
+   border: none;
 }
  .code-knack-playground .code-knack-output {
 	 display: none;
@@ -494,6 +496,10 @@ function CreateAceCodeEditor(html_element, language) {
     }
   }
 
+
+  // TODO: make a button or something for switching b/w modes
+  setLightModeDarkMode("dark");
+
   if (language) {
     SetAceEditor_Mode()
   }
@@ -544,6 +550,30 @@ async function CreateAceEditorForPlugin(element, language) {
 
   }
 
+}
+
+function setLightModeDarkMode(mode) {
+  var r = document.querySelector('.code-knack-playground');
+  if (mode == "light") {
+    r.style.setProperty('--code', 'black');
+    r.style.setProperty('--code-bg', 'white');
+    r.style.setProperty('--border', 'rgb(201, 201, 201)');
+    r.style.setProperty('--text', 'black');
+    r.style.setProperty('--title', 'black');
+    r.style.setProperty('--button-text', 'black');
+    r.style.setProperty('--button-border', 'rgba(0,0,0,0.18)');
+    r.style.setProperty('--bg', 'rgb(250,250,250)');
+  }
+  if (mode == "dark") {
+    r.style.setProperty('--code', 'white');
+    r.style.setProperty('--code-bg', 'rgba(39, 40, 35, 1)');
+    r.style.setProperty('--border', 'rgba(0, 0, 0, 0.3)');
+    r.style.setProperty('--text', 'white');
+    r.style.setProperty('--title', 'white');
+    r.style.setProperty('--button-text', 'wheat');
+    r.style.setProperty('--button-border', 'rgba(0,0,0,0.18)');
+    r.style.setProperty('--bg', '#3a3636');
+  }
 }
 
 
