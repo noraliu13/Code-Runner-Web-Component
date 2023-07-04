@@ -1,18 +1,18 @@
 // All the supported languages / aliases for language names + versions (used for auto-detecting version to use) 
-let PistonAPI_Languages = [{"language":"matl","version":"22.5.0","aliases":[]},{"language":"bash","version":"5.2.0","aliases":["sh"]},{"language":"befunge93","version":"0.2.0","aliases":["b93"]},{"language":"bqn","version":"1.0.0","aliases":[]},{"language":"brachylog","version":"1.0.0","aliases":[]},{"language":"brainfuck","version":"2.7.3","aliases":["bf"]},{"language":"cjam","version":"0.6.5","aliases":[]},{"language":"clojure","version":"1.10.3","aliases":["clojure","clj"]},{"language":"cobol","version":"3.1.2","aliases":["cob"]},{"language":"coffeescript","version":"2.5.1","aliases":["coffeescript","coffee"]},{"language":"cow","version":"1.0.0","aliases":["cow"]},{"language":"crystal","version":"0.36.1","aliases":["crystal","cr"]},{"language":"dart","version":"2.19.6","aliases":[]},{"language":"dash","version":"0.5.11","aliases":["dash"]},{"language":"typescript","version":"1.32.3","aliases":["deno","deno-ts"],"runtime":"deno"},{"language":"javascript","version":"1.32.3","aliases":["deno-js"],"runtime":"deno"},{"language":"basic.net","version":"5.0.201","aliases":["basic","visual-basic","visual-basic.net","vb","vb.net","vb-dotnet","dotnet-vb","basic-dotnet","dotnet-basic"],"runtime":"dotnet"},{"language":"fsharp.net","version":"5.0.201","aliases":["fsharp","fs","f#","fs.net","f#.net","fsharp-dotnet","fs-dotnet","f#-dotnet","dotnet-fsharp","dotnet-fs","dotnet-fs"],"runtime":"dotnet"},{"language":"csharp.net","version":"5.0.201","aliases":["csharp","c#","cs","c#.net","cs.net","c#-dotnet","cs-dotnet","csharp-dotnet","dotnet-c#","dotnet-cs","dotnet-csharp"],"runtime":"dotnet"},{"language":"fsi","version":"5.0.201","aliases":["fsx","fsharp-interactive","f#-interactive","dotnet-fsi","fsi-dotnet","fsi.net"],"runtime":"dotnet"},{"language":"dragon","version":"1.9.8","aliases":[]},{"language":"elixir","version":"1.11.3","aliases":["elixir","exs"]},{"language":"emacs","version":"27.1.0","aliases":["emacs","el","elisp"]},{"language":"emojicode","version":"1.0.2","aliases":["emojic"]},{"language":"erlang","version":"23.0.0","aliases":["erlang","erl","escript"]},{"language":"file","version":"0.0.1","aliases":["executable","elf","binary"]},{"language":"forte","version":"1.0.0","aliases":["forter"]},{"language":"forth","version":"0.7.3","aliases":["gforth"]},{"language":"freebasic","version":"1.9.0","aliases":["bas","fbc","basic","qbasic","quickbasic"]},{"language":"awk","version":"5.1.0","aliases":["gawk"],"runtime":"gawk"},{"language":"c","version":"10.2.0","aliases":["gcc"],"runtime":"gcc"},{"language":"c++","version":"10.2.0","aliases":["cpp","g++"],"runtime":"gcc"},{"language":"d","version":"10.2.0","aliases":["gdc"],"runtime":"gcc"},{"language":"fortran","version":"10.2.0","aliases":["fortran","f90"],"runtime":"gcc"},{"language":"go","version":"1.16.2","aliases":["go","golang"]},{"language":"golfscript","version":"1.0.0","aliases":["golfscript"]},{"language":"groovy","version":"3.0.7","aliases":["groovy","gvy"]},{"language":"haskell","version":"9.0.1","aliases":["haskell","hs"]},{"language":"husk","version":"1.0.0","aliases":[]},{"language":"iverilog","version":"11.0.0","aliases":["verilog","vvp"]},{"language":"japt","version":"2.0.0","aliases":["japt"]},{"language":"java","version":"15.0.2","aliases":[]},{"language":"jelly","version":"0.1.31","aliases":[]},{"language":"julia","version":"1.8.5","aliases":["jl"]},{"language":"kotlin","version":"1.8.20","aliases":["kt"]},{"language":"lisp","version":"2.1.2","aliases":["lisp","cl","sbcl","commonlisp"]},{"language":"llvm_ir","version":"12.0.1","aliases":["llvm","llvm-ir","ll"]},{"language":"lolcode","version":"0.11.2","aliases":["lol","lci"]},{"language":"lua","version":"5.4.4","aliases":[]},{"language":"csharp","version":"6.12.0","aliases":["mono","mono-csharp","mono-c#","mono-cs","c#","cs"],"runtime":"mono"},{"language":"basic","version":"6.12.0","aliases":["vb","mono-vb","mono-basic","visual-basic","visual basic"],"runtime":"mono"},{"language":"nasm","version":"2.15.5","aliases":["asm","nasm32"],"runtime":"nasm"},{"language":"nasm64","version":"2.15.5","aliases":["asm64"],"runtime":"nasm"},{"language":"nim","version":"1.6.2","aliases":[]},{"language":"javascript","version":"18.15.0","aliases":["node-javascript","node-js","node.js","javascript","js"],"runtime":"node"},{"language":"ocaml","version":"4.12.0","aliases":["ocaml","ml"]},{"language":"octave","version":"8.1.0","aliases":["matlab","m"]},{"language":"osabie","version":"1.0.1","aliases":["osabie","05AB1E","usable"]},{"language":"paradoc","version":"0.6.0","aliases":["paradoc"]},{"language":"pascal","version":"3.2.2","aliases":["freepascal","pp","pas"]},{"language":"perl","version":"5.36.0","aliases":["pl"]},{"language":"php","version":"8.2.3","aliases":[]},{"language":"ponylang","version":"0.39.0","aliases":["pony","ponyc"]},{"language":"prolog","version":"8.2.4","aliases":["prolog","plg"]},{"language":"pure","version":"0.68.0","aliases":[]},{"language":"powershell","version":"7.1.4","aliases":["ps","pwsh","ps1"],"runtime":"pwsh"},{"language":"pyth","version":"1.0.0","aliases":["pyth"]},{"language":"python2","version":"2.7.18","aliases":["py2","python2"]},{"language":"python","version":"3.10.0","aliases":["py","py3","python3","python3.10"]},{"language":"racket","version":"8.3.0","aliases":["rkt"]},{"language":"raku","version":"6.100.0","aliases":["raku","rakudo","perl6","p6","pl6"]},{"language":"retina","version":"1.2.0","aliases":["ret"]},{"language":"rockstar","version":"1.0.0","aliases":["rock","rocky"]},{"language":"rscript","version":"4.1.1","aliases":["r"]},{"language":"ruby","version":"3.0.1","aliases":["ruby3","rb"]},{"language":"rust","version":"1.68.2","aliases":["rs"]},{"language":"samarium","version":"0.3.1","aliases":["sm"]},{"language":"scala","version":"3.2.2","aliases":["sc"]},{"language":"smalltalk","version":"3.2.3","aliases":["st"]},{"language":"sqlite3","version":"3.36.0","aliases":["sqlite","sql"]},{"language":"swift","version":"5.3.3","aliases":["swift"]},{"language":"typescript","version":"5.0.3","aliases":["ts","node-ts","tsc","typescript5","ts5"]},{"language":"vlang","version":"0.3.3","aliases":["v"]},{"language":"vyxal","version":"2.4.1","aliases":[]},{"language":"yeethon","version":"3.10.0","aliases":["yeethon3"]},{"language":"zig","version":"0.9.1","aliases":["zig"]}]
+let PistonAPI_Languages = [{ "language": "matl", "version": "22.5.0", "aliases": [] }, { "language": "bash", "version": "5.2.0", "aliases": ["sh"] }, { "language": "befunge93", "version": "0.2.0", "aliases": ["b93"] }, { "language": "bqn", "version": "1.0.0", "aliases": [] }, { "language": "brachylog", "version": "1.0.0", "aliases": [] }, { "language": "brainfuck", "version": "2.7.3", "aliases": ["bf"] }, { "language": "cjam", "version": "0.6.5", "aliases": [] }, { "language": "clojure", "version": "1.10.3", "aliases": ["clojure", "clj"] }, { "language": "cobol", "version": "3.1.2", "aliases": ["cob"] }, { "language": "coffeescript", "version": "2.5.1", "aliases": ["coffeescript", "coffee"] }, { "language": "cow", "version": "1.0.0", "aliases": ["cow"] }, { "language": "crystal", "version": "0.36.1", "aliases": ["crystal", "cr"] }, { "language": "dart", "version": "2.19.6", "aliases": [] }, { "language": "dash", "version": "0.5.11", "aliases": ["dash"] }, { "language": "typescript", "version": "1.32.3", "aliases": ["deno", "deno-ts"], "runtime": "deno" }, { "language": "javascript", "version": "1.32.3", "aliases": ["deno-js"], "runtime": "deno" }, { "language": "basic.net", "version": "5.0.201", "aliases": ["basic", "visual-basic", "visual-basic.net", "vb", "vb.net", "vb-dotnet", "dotnet-vb", "basic-dotnet", "dotnet-basic"], "runtime": "dotnet" }, { "language": "fsharp.net", "version": "5.0.201", "aliases": ["fsharp", "fs", "f#", "fs.net", "f#.net", "fsharp-dotnet", "fs-dotnet", "f#-dotnet", "dotnet-fsharp", "dotnet-fs", "dotnet-fs"], "runtime": "dotnet" }, { "language": "csharp.net", "version": "5.0.201", "aliases": ["csharp", "c#", "cs", "c#.net", "cs.net", "c#-dotnet", "cs-dotnet", "csharp-dotnet", "dotnet-c#", "dotnet-cs", "dotnet-csharp"], "runtime": "dotnet" }, { "language": "fsi", "version": "5.0.201", "aliases": ["fsx", "fsharp-interactive", "f#-interactive", "dotnet-fsi", "fsi-dotnet", "fsi.net"], "runtime": "dotnet" }, { "language": "dragon", "version": "1.9.8", "aliases": [] }, { "language": "elixir", "version": "1.11.3", "aliases": ["elixir", "exs"] }, { "language": "emacs", "version": "27.1.0", "aliases": ["emacs", "el", "elisp"] }, { "language": "emojicode", "version": "1.0.2", "aliases": ["emojic"] }, { "language": "erlang", "version": "23.0.0", "aliases": ["erlang", "erl", "escript"] }, { "language": "file", "version": "0.0.1", "aliases": ["executable", "elf", "binary"] }, { "language": "forte", "version": "1.0.0", "aliases": ["forter"] }, { "language": "forth", "version": "0.7.3", "aliases": ["gforth"] }, { "language": "freebasic", "version": "1.9.0", "aliases": ["bas", "fbc", "basic", "qbasic", "quickbasic"] }, { "language": "awk", "version": "5.1.0", "aliases": ["gawk"], "runtime": "gawk" }, { "language": "c", "version": "10.2.0", "aliases": ["gcc"], "runtime": "gcc" }, { "language": "c++", "version": "10.2.0", "aliases": ["cpp", "g++"], "runtime": "gcc" }, { "language": "d", "version": "10.2.0", "aliases": ["gdc"], "runtime": "gcc" }, { "language": "fortran", "version": "10.2.0", "aliases": ["fortran", "f90"], "runtime": "gcc" }, { "language": "go", "version": "1.16.2", "aliases": ["go", "golang"] }, { "language": "golfscript", "version": "1.0.0", "aliases": ["golfscript"] }, { "language": "groovy", "version": "3.0.7", "aliases": ["groovy", "gvy"] }, { "language": "haskell", "version": "9.0.1", "aliases": ["haskell", "hs"] }, { "language": "husk", "version": "1.0.0", "aliases": [] }, { "language": "iverilog", "version": "11.0.0", "aliases": ["verilog", "vvp"] }, { "language": "japt", "version": "2.0.0", "aliases": ["japt"] }, { "language": "java", "version": "15.0.2", "aliases": [] }, { "language": "jelly", "version": "0.1.31", "aliases": [] }, { "language": "julia", "version": "1.8.5", "aliases": ["jl"] }, { "language": "kotlin", "version": "1.8.20", "aliases": ["kt"] }, { "language": "lisp", "version": "2.1.2", "aliases": ["lisp", "cl", "sbcl", "commonlisp"] }, { "language": "llvm_ir", "version": "12.0.1", "aliases": ["llvm", "llvm-ir", "ll"] }, { "language": "lolcode", "version": "0.11.2", "aliases": ["lol", "lci"] }, { "language": "lua", "version": "5.4.4", "aliases": [] }, { "language": "csharp", "version": "6.12.0", "aliases": ["mono", "mono-csharp", "mono-c#", "mono-cs", "c#", "cs"], "runtime": "mono" }, { "language": "basic", "version": "6.12.0", "aliases": ["vb", "mono-vb", "mono-basic", "visual-basic", "visual basic"], "runtime": "mono" }, { "language": "nasm", "version": "2.15.5", "aliases": ["asm", "nasm32"], "runtime": "nasm" }, { "language": "nasm64", "version": "2.15.5", "aliases": ["asm64"], "runtime": "nasm" }, { "language": "nim", "version": "1.6.2", "aliases": [] }, { "language": "javascript", "version": "18.15.0", "aliases": ["node-javascript", "node-js", "node.js", "javascript", "js"], "runtime": "node" }, { "language": "ocaml", "version": "4.12.0", "aliases": ["ocaml", "ml"] }, { "language": "octave", "version": "8.1.0", "aliases": ["matlab", "m"] }, { "language": "osabie", "version": "1.0.1", "aliases": ["osabie", "05AB1E", "usable"] }, { "language": "paradoc", "version": "0.6.0", "aliases": ["paradoc"] }, { "language": "pascal", "version": "3.2.2", "aliases": ["freepascal", "pp", "pas"] }, { "language": "perl", "version": "5.36.0", "aliases": ["pl"] }, { "language": "php", "version": "8.2.3", "aliases": [] }, { "language": "ponylang", "version": "0.39.0", "aliases": ["pony", "ponyc"] }, { "language": "prolog", "version": "8.2.4", "aliases": ["prolog", "plg"] }, { "language": "pure", "version": "0.68.0", "aliases": [] }, { "language": "powershell", "version": "7.1.4", "aliases": ["ps", "pwsh", "ps1"], "runtime": "pwsh" }, { "language": "pyth", "version": "1.0.0", "aliases": ["pyth"] }, { "language": "python2", "version": "2.7.18", "aliases": ["py2", "python2"] }, { "language": "python", "version": "3.10.0", "aliases": ["py", "py3", "python3", "python3.10"] }, { "language": "racket", "version": "8.3.0", "aliases": ["rkt"] }, { "language": "raku", "version": "6.100.0", "aliases": ["raku", "rakudo", "perl6", "p6", "pl6"] }, { "language": "retina", "version": "1.2.0", "aliases": ["ret"] }, { "language": "rockstar", "version": "1.0.0", "aliases": ["rock", "rocky"] }, { "language": "rscript", "version": "4.1.1", "aliases": ["r"] }, { "language": "ruby", "version": "3.0.1", "aliases": ["ruby3", "rb"] }, { "language": "rust", "version": "1.68.2", "aliases": ["rs"] }, { "language": "samarium", "version": "0.3.1", "aliases": ["sm"] }, { "language": "scala", "version": "3.2.2", "aliases": ["sc"] }, { "language": "smalltalk", "version": "3.2.3", "aliases": ["st"] }, { "language": "sqlite3", "version": "3.36.0", "aliases": ["sqlite", "sql"] }, { "language": "swift", "version": "5.3.3", "aliases": ["swift"] }, { "language": "typescript", "version": "5.0.3", "aliases": ["ts", "node-ts", "tsc", "typescript5", "ts5"] }, { "language": "vlang", "version": "0.3.3", "aliases": ["v"] }, { "language": "vyxal", "version": "2.4.1", "aliases": [] }, { "language": "yeethon", "version": "3.10.0", "aliases": ["yeethon3"] }, { "language": "zig", "version": "0.9.1", "aliases": ["zig"] }]
 
 class CodeRunner extends HTMLElement {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    connectedCallback() {
+  connectedCallback() {
 
 
-        // will be used to set language type to use and names of languages 
-        const language = this.getAttribute('language');
-	    
-        const styling = `<style>
+    // will be used to set language type to use and names of languages 
+    const language = this.getAttribute('language');
+
+    const styling = `<style>
     
     /*compress*/
     .code-knack-playground {
@@ -187,8 +187,8 @@ class CodeRunner extends HTMLElement {
  </style>
  `
 
-        if (!language) {
-            return this.innerHTML = `${styling}   <!--compress-->  <div>
+    if (!language) {
+      return this.innerHTML = `${styling}   <!--compress-->  <div>
   
 <pre style="padding: 0px; --bg:rgb(58, 54, 54); --text:rgb(255, 255, 255); --border:rgba(0,0,0,0.3); --code:rgb(255, 255, 255); --code-bg:rgba(39, 40, 35, 1); --title:rgb(255, 255, 255); --button-text:wheat; --button-border:rgba(0,0,0,0.18);"><div class="code-knack-playground "><div class="code-knack-pane"><div class="code-knack-title">Error!</div>
   
@@ -199,12 +199,12 @@ class CodeRunner extends HTMLElement {
       </div>
       <!--endcompress-->
       `
-        }
+    }
 
-        // disable spellcheck
-        this.spellcheck = false;
+    // disable spellcheck
+    this.spellcheck = false;
 
-        this.innerHTML = ` ${styling}
+    this.innerHTML = ` ${styling}
     
     <!--compress-->
     
@@ -230,13 +230,13 @@ class CodeRunner extends HTMLElement {
 
 
 
-        // if WC is using Piston API
-        if (!this.hasAttribute("custom-compiler")) {
+    // if WC is using Piston API
+    if (!this.hasAttribute("custom-compiler")) {
 
-            // show error if language is not found in Piston API 
-            if (GetVersionForPistonAPI(this.getAttribute("language").toLowerCase(), "GETNAME") == undefined) {
-                // this needs cleaned with a proper error function... @ Dominick?
-                return this.innerHTML = `${styling}   <!--compress-->  <div>
+      // show error if language is not found in Piston API 
+      if (GetVersionForPistonAPI(this.getAttribute("language").toLowerCase(), "GETNAME") == undefined) {
+        // this needs cleaned with a proper error function... @ Dominick?
+        return this.innerHTML = `${styling}   <!--compress-->  <div>
   
 <pre style="padding: 0px; --bg:rgb(58, 54, 54); --text:rgb(255, 255, 255); --border:rgba(0,0,0,0.3); --code:rgb(255, 255, 255); --code-bg:rgba(39, 40, 35, 1); --title:rgb(255, 255, 255); --button-text:wheat; --button-border:rgba(0,0,0,0.18);"><div class="code-knack-playground "><div class="code-knack-pane"><div class="code-knack-title">Error!</div>
   
@@ -247,161 +247,161 @@ See the repo if there is any plugins that support "${this.getAttribute("language
       </div>
       <!--endcompress-->
       `
-            } else {
+      } else {
 
-                // language was found! 
-		    
-                /// Render Ace Editor! 
-                async function AceEditorForPistonAPI(element) {
-                    // Wait till AceEditor is loaded - so no errors occur.
-                    let isAceLoaded = await loadAceEditor()
-		    
-                    if (isAceLoaded.loaded === "true") {
-                        CreateAceCodeEditor(element, GetVersionForPistonAPI(element.getAttribute("language").toLowerCase(), "GETNAME")) //
-                    }
+        // language was found! 
 
-                }
-                AceEditorForPistonAPI(this)
-            }
+        /// Render Ace Editor! 
+        async function AceEditorForPistonAPI(element) {
+          // Wait till AceEditor is loaded - so no errors occur.
+          let isAceLoaded = await loadAceEditor()
 
-
-        } 
-
-        // handle Run Button clicks -   
-        this.querySelector('[ code-runner-button]').addEventListener('click', (e) => handleclick(this));
-
-
-        // Handle Copy Button Clicks   
-        this.querySelector('[code-runner-copy-button]').addEventListener('click', (e) => handleCopyBtnClick(this));
-
-        function handleCopyBtnClick(html_element) {
-
-            navigator.clipboard.writeText(html_element.querySelector("#codetorun").innerText)
-            /// Set Copied To Clipboard Visible
-            html_element.querySelector(".code-knack-mask").style.display = "flex"
-            // then hide it after X seconds.. 
-            setTimeout(() => {
-                html_element.querySelector(".code-knack-mask").style.display = "none";
-            }, "3000")
+          if (isAceLoaded.loaded === "true") {
+            CreateAceCodeEditor(element, GetVersionForPistonAPI(element.getAttribute("language").toLowerCase(), "GETNAME")) //
+          }
 
         }
+        AceEditorForPistonAPI(this)
+      }
 
 
     }
+
+    // handle Run Button clicks -   
+    this.querySelector('[ code-runner-button]').addEventListener('click', (e) => handleclick(this));
+
+
+    // Handle Copy Button Clicks   
+    this.querySelector('[code-runner-copy-button]').addEventListener('click', (e) => handleCopyBtnClick(this));
+
+    function handleCopyBtnClick(html_element) {
+
+      navigator.clipboard.writeText(html_element.querySelector("#codetorun").innerText)
+      /// Set Copied To Clipboard Visible
+      html_element.querySelector(".code-knack-mask").style.display = "flex"
+      // then hide it after X seconds.. 
+      setTimeout(() => {
+        html_element.querySelector(".code-knack-mask").style.display = "none";
+      }, "3000")
+
+    }
+
+
+  }
 }
 
 // Function To Call API to run code inside the web-component
 let ansiUpped = {
-  loaded:false,
-  ansiUp:null,
+  loaded: false,
+  ansiUp: null,
 };
 
 // gets data from API and sets the content of #result div
 async function getData(html_element) {
-    // display the output / results block
-    const result_section = html_element.querySelector("#output_section")
-    result_section.style.display = "block";
+  // display the output / results block
+  const result_section = html_element.querySelector("#output_section")
+  result_section.style.display = "block";
 
-    // make sure user is connected to internet  -
-    if (navigator.onLine) {
+  // make sure user is connected to internet  -
+  if (navigator.onLine) {
 
-        try {
+    try {
 
-	    // loading ANSI_UP via import	
-            if (ansiUpped.loaded != true) {
-                ansiUpped.ansiUp = await import("https://cdn.skypack.dev/ansi_up@5.1.0")
-                ansiUpped.ansiUp = ansiUpped.ansiUp.default
-                ansiUpped.ansiUp = new ansiUpped.ansiUp
-                ansiUpped.loaded = true
-            }
+      // loading ANSI_UP via import	
+      if (ansiUpped.loaded != true) {
+        ansiUpped.ansiUp = await import("https://cdn.skypack.dev/ansi_up@5.1.0")
+        ansiUpped.ansiUp = ansiUpped.ansiUp.default
+        ansiUpped.ansiUp = new ansiUpped.ansiUp
+        ansiUpped.loaded = true
+      }
 
 
-            const res = await fetch("https://emkc.org/api/v2/piston/execute", {
-                method: 'POST',
-                body: JSON.stringify({
-                    "language": html_element.getAttribute("language").toLowerCase(),
-                    "version": GetVersionForPistonAPI(html_element.getAttribute("language").toLowerCase()),
-                    "files": [{
-                        "content": editor.getValue()
-                    }],
-                    "stdin": html_element.querySelector(".code-knack-input-content").value
-                }),
+      const res = await fetch("https://emkc.org/api/v2/piston/execute", {
+        method: 'POST',
+        body: JSON.stringify({
+          "language": html_element.getAttribute("language").toLowerCase(),
+          "version": GetVersionForPistonAPI(html_element.getAttribute("language").toLowerCase()),
+          "files": [{
+            "content": editor.getValue()
+          }],
+          "stdin": html_element.querySelector(".code-knack-input-content").value
+        }),
 
-            });
-            const jsonResult = await res.json();
-            // if message - code error
-            if (jsonResult.message) {
-                html_element.querySelector("#result").innerText = JSON.stringify(`Error ${jsonResult.message}`)
-            } else {
-                html_element.querySelector("#result").innerHTML = ansiUpped.ansiUp.ansi_to_html(jsonResult.run.output)
-            }
+      });
+      const jsonResult = await res.json();
+      // if message - code error
+      if (jsonResult.message) {
+        html_element.querySelector("#result").innerText = JSON.stringify(`Error ${jsonResult.message}`)
+      } else {
+        html_element.querySelector("#result").innerHTML = ansiUpped.ansiUp.ansi_to_html(jsonResult.run.output)
+      }
 
-        }
-        // there was a network error or API is down etc... 
-        catch (error) {
-            html_element.querySelector("#result").innerText = error.message;
-        }
-
-    } else {
-        // user is not connected to internet to fetch API... 
-        html_element.querySelector("#result").innerText = "Error: You must be connected to the internet to use this!"
     }
+    // there was a network error or API is down etc... 
+    catch (error) {
+      html_element.querySelector("#result").innerText = error.message;
+    }
+
+  } else {
+    // user is not connected to internet to fetch API... 
+    html_element.querySelector("#result").innerText = "Error: You must be connected to the internet to use this!"
+  }
 
 }
 
 
 /// Provides the version to use for Piston API automatically! 
 function GetVersionForPistonAPI(string, getName) {
-    data = PistonAPI_Languages
-    for (const key in data) {
-        if (!string == data[key].language) {
-            console.log(`Error: Code-Runner could not auto-detect version to use for ${string}`)
-            return "undefined"
-
-        }
-
-        if (string == data[key].language) {
-            // console.log(`found ${data[key].version} for ${string}` )
-            if (getName) {
-                return data[key].language
-            } else {
-                return data[key].version
-            }
-
-        } else {
-            for (const aliasName in data[key].aliases) {
-                if (string == data[key].aliases[aliasName]) {
-                    // console.log(`found ${data[key].version} for ${string}` )
-                    if (getName) {
-                        return data[key].language
-                    } else {
-                        return data[key].version
-                    }
-
-
-                }
-                // Need to fix this and throw error
-                //  else{
-                // console.log(`Error: Code-Runner could not auto-detect version to use for ${string}`)
-                // return "undefined"
-                // }
-
-
-            }
-
-        }
+  data = PistonAPI_Languages
+  for (const key in data) {
+    if (!string == data[key].language) {
+      console.log(`Error: Code-Runner could not auto-detect version to use for ${string}`)
+      return "undefined"
 
     }
+
+    if (string == data[key].language) {
+      // console.log(`found ${data[key].version} for ${string}` )
+      if (getName) {
+        return data[key].language
+      } else {
+        return data[key].version
+      }
+
+    } else {
+      for (const aliasName in data[key].aliases) {
+        if (string == data[key].aliases[aliasName]) {
+          // console.log(`found ${data[key].version} for ${string}` )
+          if (getName) {
+            return data[key].language
+          } else {
+            return data[key].version
+          }
+
+
+        }
+        // Need to fix this and throw error
+        //  else{
+        // console.log(`Error: Code-Runner could not auto-detect version to use for ${string}`)
+        // return "undefined"
+        // }
+
+
+      }
+
+    }
+
+  }
 }
 
 function handleclick(codeRunner) {
-    // allow plugins / extensions to be wrote for this.
-    if (!codeRunner.hasAttribute("custom-compiler")) {
-        getData(codeRunner)
-    }
-    const input = document.querySelector(".code-knack-input-content");
-    input.setAttribute("readonly","");
-    input.style.background = "background-color: var(--bg, #3a3636)";
+  // allow plugins / extensions to be wrote for this.
+  if (!codeRunner.hasAttribute("custom-compiler")) {
+    getData(codeRunner)
+  }
+  const input = document.querySelector(".code-knack-input-content");
+  input.setAttribute("readonly", "");
+  input.style.background = "background-color: var(--bg, #3a3636)";
 }
 
 
@@ -409,18 +409,18 @@ function handleclick(codeRunner) {
 
 let loadedFiles = false;
 let create = (info) => {
-    return new Promise(function(resolve, reject) {
-        let gfgData = document.createElement('script');
-        gfgData.src = info;
-        gfgData.async = false;
-        gfgData.onload = () => {
-            resolve(info);
-        };
-        gfgData.onerror = () => {
-            reject(info);
-        };
-        document.body.appendChild(gfgData);
-    });
+  return new Promise(function (resolve, reject) {
+    let gfgData = document.createElement('script');
+    gfgData.src = info;
+    gfgData.async = false;
+    gfgData.onload = () => {
+      resolve(info);
+    };
+    gfgData.onerror = () => {
+      reject(info);
+    };
+    document.body.appendChild(gfgData);
+  });
 };
 let gfgScript = ['https://cdn.jsdelivr.net/npm/ace-min-noconflict@1.1.9/ace.min.js', 'https://cdn.jsdelivr.net/npm/ace-min-noconflict@1.1.9/ext-modelist.js', "https://cdn.jsdelivr.net/npm/ace-min-noconflict@1.1.9/ext-themelist.js"]
 let promiseData = [];
@@ -428,29 +428,29 @@ let promiseData = [];
 
 let isAceLoadedAlready = false
 async function loadAceEditor() {
-    // any variable will disable all ace editors on page 
-    // example - let CodeRunner_DisableAceEditor= "true";
-    if (typeof CodeRunner_DisableAceEditor == "undefined") {
-        if (isAceLoadedAlready === false) {
+  // any variable will disable all ace editors on page 
+  // example - let CodeRunner_DisableAceEditor= "true";
+  if (typeof CodeRunner_DisableAceEditor == "undefined") {
+    if (isAceLoadedAlready === false) {
 
-            gfgScript.forEach(function(info) {
-                promiseData.push(create(info));
-            });
-            const data = await Promise.all(promiseData).then(async function() {
-                return {
-                    loaded: "true"
-                }
-            }).catch(function(gfgData) {
-                isAceLoadedAlready = true
-                return {
-                    loaded: "false"
-                }
-                console.log(gfgData + ' failed to load!');
-            });
+      gfgScript.forEach(function (info) {
+        promiseData.push(create(info));
+      });
+      const data = await Promise.all(promiseData).then(async function () {
+        return {
+          loaded: "true"
+        }
+      }).catch(function (gfgData) {
+        isAceLoadedAlready = true
+        return {
+          loaded: "false"
+        }
+        console.log(gfgData + ' failed to load!');
+      });
 
-            return data
-        } 
+      return data
     }
+  }
 }
 
 
@@ -460,89 +460,89 @@ let editor;
 
 function CreateAceCodeEditor(html_element, language) {
 
-    // url to load Ace Editor + resources
-    ace.config.set("basePath", "https://cdn.jsdelivr.net/npm/ace-min-noconflict@1.1.9/");
+  // url to load Ace Editor + resources
+  ace.config.set("basePath", "https://cdn.jsdelivr.net/npm/ace-min-noconflict@1.1.9/");
 
 
-    let text_value = html_element.querySelector("#codetorun").textContent
-    // Editor Settings (Provided by C9)
-    editor = ace.edit(html_element.querySelector("#codetorun"));
+  let text_value = html_element.querySelector("#codetorun").textContent
+  // Editor Settings (Provided by C9)
+  editor = ace.edit(html_element.querySelector("#codetorun"));
 
-    editor.$blockScrolling = Infinity;
+  editor.$blockScrolling = Infinity;
 
-    // allow the Ace Editor theme to be changed. 
-    if (typeof CodeRunner_AceEditor_Theme == "undefined") {
-        editor.setTheme("ace/theme/monokai");
+  // allow the Ace Editor theme to be changed. 
+  if (typeof CodeRunner_AceEditor_Theme == "undefined") {
+    editor.setTheme("ace/theme/monokai");
+  } else {
+
+    let themelist = ace.require("ace/ext/themelist")
+
+    let themes = themelist.themesByName //object hash of theme objects by name
+
+    // check if theme name is valid.
+    if (themes[CodeRunner_AceEditor_Theme.toLowerCase()] != undefined) {
+
+      editor.setTheme(`ace/theme/${CodeRunner_AceEditor_Theme.toLowerCase()}`);
     } else {
-
-        let themelist = ace.require("ace/ext/themelist")
-
-        let themes = themelist.themesByName //object hash of theme objects by name
-
-        // check if theme name is valid.
-        if (themes[CodeRunner_AceEditor_Theme.toLowerCase()] != undefined) {
-
-            editor.setTheme(`ace/theme/${CodeRunner_AceEditor_Theme.toLowerCase()}`);
-        } else {
-            //
-            /// Theme choice was not valid
-            console.log(`Code Runner Error: ${CodeRunner_AceEditor_Theme} is not a valid theme - setting to default.`)
+      //
+      /// Theme choice was not valid
+      console.log(`Code Runner Error: ${CodeRunner_AceEditor_Theme} is not a valid theme - setting to default.`)
 
 
-            editor.setTheme("ace/theme/monokai");
+      editor.setTheme("ace/theme/monokai");
 
-        }
     }
+  }
 
-    if (language) {
-        SetAceEditor_Mode()
-    }
+  if (language) {
+    SetAceEditor_Mode()
+  }
 
-    function SetAceEditor_Mode() {
-        editor.getSession().setMode(`ace/mode/c_cpp`)
-        // let modelist = ace.require('ace/ext/modelist');
-        // if (modelist.modesByName[language] != undefined) {
+  function SetAceEditor_Mode() {
+    editor.getSession().setMode(`ace/mode/c_cpp`)
+    // let modelist = ace.require('ace/ext/modelist');
+    // if (modelist.modesByName[language] != undefined) {
 
-        //     editor.getSession().setMode(`ace/mode/${language}`)
-        // } else {
-        //     // language was not found
-        //     console.log(`Code Runner Error: Ace Editor Language Mode Could Not Be Found For ${language.charAt(0).toUpperCase() + language.slice(1)}`)
-        // } ////
-    }
-    editor.setShowPrintMargin(false);
-    //editor.session.setMode(`ace/mode/${GetVersionForPistonAPI(html_element.getAttribute("language").toLowerCase(), "GETNAME")}`);
+    //     editor.getSession().setMode(`ace/mode/${language}`)
+    // } else {
+    //     // language was not found
+    //     console.log(`Code Runner Error: Ace Editor Language Mode Could Not Be Found For ${language.charAt(0).toUpperCase() + language.slice(1)}`)
+    // } ////
+  }
+  editor.setShowPrintMargin(false);
+  //editor.session.setMode(`ace/mode/${GetVersionForPistonAPI(html_element.getAttribute("language").toLowerCase(), "GETNAME")}`);
 
-    editor.setValue(text_value);
+  editor.setValue(text_value);
 
 
 
-    editor.clearSelection();
-    /// This will set editor to content length
+  editor.clearSelection();
+  /// This will set editor to content length
 
-    /// This will set editor to auto-expand 
-    //editor.setOptions({
-    //  maxLines: Infinity
-    // });
-    editor.setOptions({
-        maxLines: Infinity
-    });
+  /// This will set editor to auto-expand 
+  //editor.setOptions({
+  //  maxLines: Infinity
+  // });
+  editor.setOptions({
+    maxLines: Infinity
+  });
 }
 
 
 async function CreateAceEditorForPlugin(element, language) {
 
-    // make sure the editor is only set for non-terminal. 
-    if (!element.getAttribute("custom-compiler").includes("shell") || !element.getAttribute("custom-compiler").includes("terminal")) {
-        // load ace editor for custom compiler plugin
-        // Wait till AceEditor is loaded - so no errors occur.
+  // make sure the editor is only set for non-terminal. 
+  if (!element.getAttribute("custom-compiler").includes("shell") || !element.getAttribute("custom-compiler").includes("terminal")) {
+    // load ace editor for custom compiler plugin
+    // Wait till AceEditor is loaded - so no errors occur.
 
-        let isAceLoaded = await loadAceEditor()
-        if (isAceLoaded.loaded === "true") {
+    let isAceLoaded = await loadAceEditor()
+    if (isAceLoaded.loaded === "true") {
 
-            CreateAceCodeEditor(element, language) //
-        }
-
+      CreateAceCodeEditor(element, language) //
     }
+
+  }
 
 }
 
