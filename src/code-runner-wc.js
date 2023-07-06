@@ -473,8 +473,15 @@ function CreateAceCodeEditor(html_element, language) {
   editor.$blockScrolling = Infinity;
 
   // allow the Ace Editor theme to be changed. 
+  const DEFAULT_THEME_LIGHT = "ace/theme/tomorrow";
+  const DEFAULT_THEME_DARK = "ace/theme/monokai";
   if (typeof CodeRunner_AceEditor_Theme == "undefined") {
-    editor.setTheme("ace/theme/monokai");
+    if (typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light") {
+      editor.setTheme(DEFAULT_THEME_LIGHT);
+    }
+    else {
+      editor.setTheme(DEFAULT_THEME_DARK);
+    }
   } else {
 
     let themelist = ace.require("ace/ext/themelist")
@@ -491,14 +498,18 @@ function CreateAceCodeEditor(html_element, language) {
       console.log(`Code Runner Error: ${CodeRunner_AceEditor_Theme} is not a valid theme - setting to default.`)
 
 
-      editor.setTheme("ace/theme/monokai");
-
+      if (typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light") {
+        editor.setTheme(DEFAULT_THEME_LIGHT);
+      }
+      else {
+        editor.setTheme(DEFAULT_THEME_DARK);
+      }
     }
   }
 
 
   // TODO: make a button or something for switching b/w modes
-  setLightModeDarkMode("dark");
+  setLightModeDarkMode(CodeRunner_LightOrDarkMode);
 
   if (language) {
     SetAceEditor_Mode()

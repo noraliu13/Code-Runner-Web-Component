@@ -1,11 +1,15 @@
 <head>
-  <script src="src/code-runner-wc.js" defer></script>
+  <script>
+    let CodeRunner_LightOrDarkMode = "light";
+    // let CodeRunner_AceEditor_Theme = "github";
+  </script>
+  <script src="src/code-runner-wc.js" defer>
+  </script>
 </head>
 
 <body>
   <code-runner language="c" input="12
-34">
-    <textarea>#include<stdio.h>
+34"><textarea>#include <stdio.h>
 int main(){
 int a,b = 10;
 scanf("%d", &a);
