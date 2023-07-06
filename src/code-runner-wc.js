@@ -331,11 +331,23 @@ async function getData(html_element) {
 
       });
       const jsonResult = await res.json();
-      // if message - code error
-      if (jsonResult.message) {
-        html_element.querySelector("#result").innerText = JSON.stringify(`Error ${jsonResult.message}`)
+      // if has compile output - code error
+      if (jsonResult.compile.output) {
+        html_element.querySelector("#result").innerText = `Error: ${jsonResult.compile.output.replace(/(chmod: cannot access \'a\.out\': No such file or directory$)/gm, "")}`;
+        document.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? '#eb9898' : '#753131'); // highlight the background as pink on error
+      }
+      // if has SIGKILL, process ran for too long
+      else if (jsonResult.run.signal) {
+        html_element.querySelector("#result").innerText = `Error: process killed with signal ${jsonResult.run.signal}\n (do you have an infinite loop? are you trying to do illegal stuff;)?)`;
+        document.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? '#eb9898' : '#753131'); // highlight the background as pink on error
+      }
+      // if SEGMENTATION_FAULT
+      else if (jsonResult.run.output.includes("Segmentation fault")) {
+        html_element.querySelector("#result").innerText = `Error: ${jsonResult.run.output}\n(check for stray pointers, dereferencing null, double free...)`;
+        document.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? '#eb9898' : '#753131'); // highlight the background as pink on error
       } else {
-        html_element.querySelector("#result").innerHTML = ansiUpped.ansiUp.ansi_to_html(jsonResult.run.output)
+        html_element.querySelector("#result").innerHTML = ansiUpped.ansiUp.ansi_to_html(jsonResult.run.output);
+        document.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? 'rgb(250,250,250)' : '#3a3636');
       }
 
     }
@@ -516,6 +528,7 @@ function CreateAceCodeEditor(html_element, language) {
   }
 
   function SetAceEditor_Mode() {
+    // For our purposes, only C is good enough
     editor.getSession().setMode(`ace/mode/c_cpp`)
     // let modelist = ace.require('ace/ext/modelist');
     // if (modelist.modesByName[language] != undefined) {

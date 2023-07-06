@@ -1,21 +1,60 @@
 <head>
   <script>
-    let CodeRunner_LightOrDarkMode = "light";
+    /* CodeRunner_LightOrDarkMode
+       values: "light" or "dark"
+       default: "light"
+      */
+    let CodeRunner_LightOrDarkMode = "dark";
+    /* CodeRunner_AceEditor_Theme
+       values: https://github.com/ajaxorg/ace/tree/master/src/theme
+       default: "tomorrow" if CodeRunner_LightOrDarkMode = "light", and "monokai" if CodeRunner_LightOrDarkMode = "dark"
+      */
+    // example usage:
     // let CodeRunner_AceEditor_Theme = "github";
   </script>
   <script src="src/code-runner-wc.js" defer>
   </script>
 </head>
 
+<h1>Code Runner component exhibits</h1>
+
 <body>
-  <code-runner language="c" input="12
-34"><textarea>#include <stdio.h>
+
+  <!-- TODO: fix issue where multiple coderunners can't function together on the same page -->
+  <!-- <code-runner language="c" input="12
+34"><textarea>
+// Hello world with 2 inputs
+#include <stdio.h>
 int main(){
 int a,b = 10;
 scanf("%d", &a);
 scanf("%d", &b);
 printf("hello %d %d\n", a, b);
-}
-</textarea>
-  </code-runner>
+}</textarea></code-runner> -->
+
+  <!-- <code-runner language="c"><textarea>
+// Compile-time error
+#include <stdio.h>
+int main(){
+printf("hello\n")
+}</textarea></code-runner> -->
+
+  <!-- <code-runner language="c"><textarea>
+// Infinite loop
+int main(){
+while(1);
+}</textarea></code-runner> -->
+
+  <code-runner language="c" input="12
+34"><textarea>
+// Seg fault
+#include <stdio.h>
+#include <stdlib.h>
+int main(){
+int* p = 0;
+printf("%d\n", *p);
+}</textarea></code-runner>
+
+
+
 </body>
