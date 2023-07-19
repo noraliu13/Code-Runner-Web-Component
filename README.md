@@ -1,7 +1,7 @@
 # Code Runner Web Component
 Used in the E-book [Snefru: Learning Programming with C](https://github.com/salma-emara/aps105-book) for APS105 course of the University of Toronto. Book is available at [learningc.org](learningc.org).
 
-## Features
+## Additional Features
 - supports light and dark theme
 - can have multiple editors on the same page
 - only supports C
