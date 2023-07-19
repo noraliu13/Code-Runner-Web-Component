@@ -343,16 +343,16 @@ async function getData(html_element) {
       }
       // if has SIGKILL, process ran for too long
       else if (jsonResult.run.signal) {
-        html_element.querySelector("#result").innerText = `Error: process killed with signal ${jsonResult.run.signal}\n\n (do you have an infinite loop? are you trying to do illegal stuff;)?)`;
+        html_element.querySelector("#result").innerText = `Error: process killed with signal ${jsonResult.run.signal}\n\n (Tip: do you have an infinite loop?)`;
         html_element.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? '#eb9898' : '#753131'); // highlight the background as pink on error
       }
       // if SEGMENTATION_FAULT
       else if (jsonResult.run.output.includes("Segmentation fault")) {
-        html_element.querySelector("#result").innerText = `Error: ${jsonResult.run.output}\n\n(check for stray pointers, dereferencing null, double free...)`;
+        html_element.querySelector("#result").innerText = `Error: ${jsonResult.run.output}\n\n(Tip: check for stray pointers, dereferencing null, double free...)`;
         html_element.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? '#eb9898' : '#753131'); // highlight the background as pink on error
       } else {
         html_element.querySelector("#result").innerHTML = ansiUpped.ansiUp.ansi_to_html(jsonResult.run.output);
-        html_element.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? 'rgb(250,250,250)' : '#3a3636');
+        html_element.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? '#edebeb' : '#3a3636');
       }
 
     }
@@ -596,7 +596,7 @@ function setLightModeDarkMode(element, mode) {
     r.style.setProperty('--title', 'black');
     r.style.setProperty('--button-text', 'black');
     r.style.setProperty('--button-border', 'rgba(0,0,0,0.18)');
-    r.style.setProperty('--bg', 'rgb(250,250,250)');
+    r.style.setProperty('--bg', '#edebeb');
   }
   if (mode == "dark") {
     r.style.setProperty('--code', 'white');
