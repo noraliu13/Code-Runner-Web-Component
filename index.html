@@ -20,10 +20,9 @@
 
 <body>
 
-  <!-- TODO: fix issue where multiple coderunners can't function together on the same page -->
-  <code-runner language="c" input="12
+<h2>Hello World with 2 inputs</h2>
+<code-runner language="c" input="12
 34" output="hello 12 34"><textarea>
-// Hello world with 2 inputs
 #include <stdio.h>
 int main(){
 int a,b = 10;
@@ -32,34 +31,37 @@ scanf("%d", &b);
 printf("hello %d %d\n", a, b);
 }</textarea></code-runner>
 
-  <code-runner language="c"><textarea>
+<h2>Compile-time error</h2>
+<code-runner language="c"><textarea>
 // Compile-time error
 #include <stdio.h>
 int main(){
 printf("hello\n")
 }</textarea></code-runner>
 
-  <!-- <code-runner language="c"><textarea>
+<h2>Infinite Loop</h2>
+<code-runner language="c"><textarea>
 // Infinite loop
 int main(){
 while(1);
-}</textarea></code-runner> -->
+}</textarea></code-runner>
 
-  <!-- <code-runner language="c"><textarea>
-// Seg fault
+<h2>Segmentation fault</h2>
+<code-runner language="c"><textarea>
 #include <stdio.h>
 #include <stdlib.h>
 int main(){
 int* p = 0;
 printf("%d\n", *p);
-}</textarea></code-runner> -->
+}</textarea></code-runner>
 
-  <!-- <code-runner language="c" output="Hello World, this is 007."><textarea>
-// With output
+
+<h2>With output</h2>
+<code-runner language="c" output="Hello World, this is 007."><textarea>
 #include <stdio.h>
 #include <stdlib.h>
 int main(){
 printf("Hello World, this is %03d.\n", 7);
-}</textarea></code-runner> -->
+}</textarea></code-runner>
 
 </body>
