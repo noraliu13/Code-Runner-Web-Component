@@ -231,9 +231,9 @@ class CodeRunner extends HTMLElement {
 
     // set up the expected output
     if (this.hasAttribute("output")){
-      document.querySelector('.code-knack-output-title').innerText = "Output (for example input)";
-      document.querySelector('#result').innerText = this.getAttribute("output");
-      document.querySelector(".code-knack-output-content").style.opacity = 0.5;
+      this.querySelector('.code-knack-output-title').innerText = "Output (for example input)";
+      this.querySelector('#result').innerText = this.getAttribute("output");
+      this.querySelector(".code-knack-output-content").style.opacity = 0.5;
     }
 
     // if WC is using Piston API
@@ -335,16 +335,16 @@ async function getData(html_element) {
 
       });
       const jsonResult = await res.json();
-      document.querySelector(".code-knack-output-content").style.opacity = 1;
+      html_element.querySelector(".code-knack-output-content").style.opacity = 1;
       // if has compile output - code error
       if (jsonResult.compile.output) {
         html_element.querySelector("#result").innerText = `Error: ${jsonResult.compile.output.replace(/(chmod: cannot access \'a\.out\': No such file or directory$)/gm, "")}`;
-        document.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? '#eb9898' : '#753131'); // highlight the background as pink on error
+        html_element.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? '#eb9898' : '#753131'); // highlight the background as pink on error
       }
       // if has SIGKILL, process ran for too long
       else if (jsonResult.run.signal) {
         html_element.querySelector("#result").innerText = `Error: process killed with signal ${jsonResult.run.signal}\n (do you have an infinite loop? are you trying to do illegal stuff;)?)`;
-        document.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? '#eb9898' : '#753131'); // highlight the background as pink on error
+        html_element.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? '#eb9898' : '#753131'); // highlight the background as pink on error
       }
       // if SEGMENTATION_FAULT
       else if (jsonResult.run.output.includes("Segmentation fault")) {
@@ -352,7 +352,7 @@ async function getData(html_element) {
         document.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? '#eb9898' : '#753131'); // highlight the background as pink on error
       } else {
         html_element.querySelector("#result").innerHTML = ansiUpped.ansiUp.ansi_to_html(jsonResult.run.output);
-        document.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? 'rgb(250,250,250)' : '#3a3636');
+        html_element.querySelector(".code-knack-output").style.setProperty('--bg', typeof CodeRunner_LightOrDarkMode == "undefined" || CodeRunner_LightOrDarkMode == "light" ? 'rgb(250,250,250)' : '#3a3636');
       }
 
     }
@@ -415,15 +415,15 @@ function GetVersionForPistonAPI(string, getName) {
 
 function handleclick(codeRunner) {
   // set output to "loading"
-  document.querySelector('.code-knack-output-title').innerText = "Output";
-  document.querySelector('#result').innerText = "Loading...";
+  codeRunner.querySelector('.code-knack-output-title').innerText = "Output";
+  codeRunner.querySelector('#result').innerText = "Loading...";
 
   // allow plugins / extensions to be wrote for this.
   if (!codeRunner.hasAttribute("custom-compiler")) {
     getData(codeRunner)
   }
   // set input to read-only
-  const input = document.querySelector(".code-knack-input-content");
+  const input = codeRunner.querySelector(".code-knack-input-content");
   input.setAttribute("readonly", "");
   input.style.background = "background-color: var(--bg, #3a3636)";
 }
@@ -531,7 +531,7 @@ function CreateAceCodeEditor(html_element, language) {
 
 
   // TODO: make a button or something for switching b/w modes
-  setLightModeDarkMode(CodeRunner_LightOrDarkMode);
+  setLightModeDarkMode(html_element, CodeRunner_LightOrDarkMode);
 
   if (language) {
     SetAceEditor_Mode()
@@ -586,8 +586,8 @@ async function CreateAceEditorForPlugin(element, language) {
 
 }
 
-function setLightModeDarkMode(mode) {
-  var r = document.querySelector('.code-knack-playground');
+function setLightModeDarkMode(element, mode) {
+  var r = element.querySelector('.code-knack-playground');
   if (mode == "light") {
     r.style.setProperty('--code', 'black');
     r.style.setProperty('--code-bg', 'white');
