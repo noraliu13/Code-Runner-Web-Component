@@ -128,7 +128,6 @@ class CodeRunner extends HTMLElement {
    border: none;
 }
  .code-knack-playground .code-knack-output {
-	 display: none;
 	 background: var(--bg, #3a3636);
 	 font-family: 'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace !important;
 	 border-top: 1px solid var(--border, rgba(0, 0, 0, 0.1));
@@ -220,8 +219,8 @@ class CodeRunner extends HTMLElement {
   
 </div><div id="codetorun" class="code-knack-text" contenteditable style="/* display: none; */">${this.innerHTML}</div>
 <div class="input-output-box">
-<div id="input_section" class="code-knack-input"><div class="code-knack-input-title">Input</div><textarea class="code-knack-input-content" name="input-text" rows="10" cols="30" >${this.getAttribute("input")}</textarea></div>
-<div id="output_section" class="code-knack-output text-output"><div class="code-knack-output-title">Output</div><pre class="code-knack-output-content" id="result">Loading..<br></pre></div></div></pre>
+<div id="input_section" class="code-knack-input"><div class="code-knack-input-title">Input</div><textarea class="code-knack-input-content" name="input-text" rows="10" cols="30" >${this.hasAttribute("input")?this.getAttribute("input"):""}</textarea></div>
+<div id="output_section" class="code-knack-output text-output"><div class="code-knack-output-title">Output</div><pre class="code-knack-output-content" id="result"></pre></div></div></pre>
       </div>
       </div>
       </div>
@@ -230,7 +229,12 @@ class CodeRunner extends HTMLElement {
     `;
 
 
-
+    // set up the expected output
+    if (this.hasAttribute("output")){
+      document.querySelector('.code-knack-output-title').innerText = "Output (for example input)";
+      document.querySelector('#result').innerText = this.getAttribute("output");
+      document.querySelector(".code-knack-output-content").style.opacity = 0.5;
+    }
 
     // if WC is using Piston API
     if (!this.hasAttribute("custom-compiler")) {
@@ -331,6 +335,7 @@ async function getData(html_element) {
 
       });
       const jsonResult = await res.json();
+      document.querySelector(".code-knack-output-content").style.opacity = 1;
       // if has compile output - code error
       if (jsonResult.compile.output) {
         html_element.querySelector("#result").innerText = `Error: ${jsonResult.compile.output.replace(/(chmod: cannot access \'a\.out\': No such file or directory$)/gm, "")}`;
@@ -409,10 +414,15 @@ function GetVersionForPistonAPI(string, getName) {
 }
 
 function handleclick(codeRunner) {
+  // set output to "loading"
+  document.querySelector('.code-knack-output-title').innerText = "Output";
+  document.querySelector('#result').innerText = "Loading...";
+
   // allow plugins / extensions to be wrote for this.
   if (!codeRunner.hasAttribute("custom-compiler")) {
     getData(codeRunner)
   }
+  // set input to read-only
   const input = document.querySelector(".code-knack-input-content");
   input.setAttribute("readonly", "");
   input.style.background = "background-color: var(--bg, #3a3636)";

@@ -4,7 +4,7 @@
        values: "light" or "dark"
        default: "light"
       */
-    let CodeRunner_LightOrDarkMode = "dark";
+    let CodeRunner_LightOrDarkMode = "light";
     /* CodeRunner_AceEditor_Theme
        values: https://github.com/ajaxorg/ace/tree/master/src/theme
        default: "tomorrow" if CodeRunner_LightOrDarkMode = "light", and "monokai" if CodeRunner_LightOrDarkMode = "dark"
@@ -21,8 +21,8 @@
 <body>
 
   <!-- TODO: fix issue where multiple coderunners can't function together on the same page -->
-  <!-- <code-runner language="c" input="12
-34"><textarea>
+  <code-runner language="c" input="12
+34" output="hello 12 34"><textarea>
 // Hello world with 2 inputs
 #include <stdio.h>
 int main(){
@@ -30,7 +30,7 @@ int a,b = 10;
 scanf("%d", &a);
 scanf("%d", &b);
 printf("hello %d %d\n", a, b);
-}</textarea></code-runner> -->
+}</textarea></code-runner>
 
   <!-- <code-runner language="c"><textarea>
 // Compile-time error
@@ -45,16 +45,21 @@ int main(){
 while(1);
 }</textarea></code-runner> -->
 
-  <code-runner language="c" input="12
-34"><textarea>
+  <!-- <code-runner language="c"><textarea>
 // Seg fault
 #include <stdio.h>
 #include <stdlib.h>
 int main(){
 int* p = 0;
 printf("%d\n", *p);
-}</textarea></code-runner>
+}</textarea></code-runner> -->
 
-
+  <!-- <code-runner language="c" output="Hello World, this is 007."><textarea>
+// With output
+#include <stdio.h>
+#include <stdlib.h>
+int main(){
+printf("Hello World, this is %03d.\n", 7);
+}</textarea></code-runner> -->
 
 </body>
