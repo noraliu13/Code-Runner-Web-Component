@@ -730,9 +730,13 @@ function CreateAceCodeEditor(html_element, language) {
 	});
 
 	// highlight lines
-	var session = editor.getSession();
-	const highlight_lines = html_element.getAttribute('highlight-lines').split(' ');
-	highlight_lines.forEach((l) => session.highlightLines(l - 1, l - 1));
+	if (html_element.hasAttribute('highlight-lines')) {
+		var session = editor.getSession();
+		const highlight_lines = html_element.getAttribute('highlight-lines').split(' ');
+		console.log(highlight_lines);
+		highlight_lines.forEach((l) => session.highlightLines(l - 1, l - 1));
+		console.log(session);
+	}
 }
 
 async function CreateAceEditorForPlugin(element, language) {
