@@ -728,6 +728,11 @@ function CreateAceCodeEditor(html_element, language) {
 	editor.setOptions({
 		maxLines: Infinity
 	});
+
+	// highlight lines
+	var session = editor.getSession();
+	const highlight_lines = html_element.getAttribute('highlight-lines').split(' ');
+	highlight_lines.forEach((l) => session.highlightLines(l - 1, l - 1));
 }
 
 async function CreateAceEditorForPlugin(element, language) {
