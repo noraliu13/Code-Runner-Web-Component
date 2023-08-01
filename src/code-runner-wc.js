@@ -372,7 +372,10 @@ class CodeRunner extends HTMLElement {
 <button class="ck-button run-button" code-runner-button><img src="https://lyricat.github.io/code-knack/demo/lib/code-knack/images/icon-play-dark.svg"><span >run</span></button>
 <button class="ck-button copy-button" code-runner-copy-button><img src="https://lyricat.github.io/code-knack/demo/lib/code-knack/images/icon-copy-dark.svg"><span>copy</span></button></div>
   
-</div><div id="codetorun" class="code-knack-text" contenteditable style="/* display: none; */">${this.innerHTML.trim()}</div>
+</div><div id="codetorun" class="code-knack-text" contenteditable style="/* display: none; */">${this.innerHTML
+			.trim()
+			.replace('”', '"')
+			.replace('“', '"')}</div>
 <div class="input-output-box">
 <div id="input_section" class="code-knack-input"><div class="code-knack-input-title">Input</div><textarea class="code-knack-input-content" name="input-text" rows="10" cols="30" >${this.hasAttribute(
 			'input'
