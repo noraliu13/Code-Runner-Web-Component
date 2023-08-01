@@ -374,8 +374,8 @@ class CodeRunner extends HTMLElement {
   
 </div><div id="codetorun" class="code-knack-text" contenteditable style="/* display: none; */">${this.innerHTML
 			.trim()
-			.replace('”', '"')
-			.replace('“', '"')}</div>
+			.replaceAll('”', '"')
+			.replaceAll('“', '"')}</div>
 <div class="input-output-box">
 <div id="input_section" class="code-knack-input"><div class="code-knack-input-title">Input</div><textarea class="code-knack-input-content" name="input-text" rows="10" cols="30" >${this.hasAttribute(
 			'input'
