@@ -731,7 +731,6 @@ function CreateAceCodeEditor(html_element, language) {
 
 	// highlight lines
 	var session = editor.getSession();
-	console.log('session:', session);
 	if (html_element.hasAttribute('highlight-lines')) {
 		const highlight_lines = html_element.getAttribute('highlight-lines').split(' ');
 		console.log(highlight_lines);
