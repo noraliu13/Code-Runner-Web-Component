@@ -306,6 +306,7 @@ class CodeRunner extends HTMLElement {
 	 font-size: 14px;
 	 overflow: auto;
 	 white-space: pre-wrap;
+   border: none;
 }
  .code-knack-playground .code-knack-output.html-output .code-knack-output-content {
 	 max-width: 100% !important;
