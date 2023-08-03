@@ -73,4 +73,20 @@ int main(){
 printf(“Hello World, this is %03d.\n”, 7);
 }
 </code-runner>
+
+<h2>Multiline output</h2>
+<code-runner language="c" output="*<br>**<br>***">
+#include &lt;stdio.h&gt;
+<br>
+int main(void) {
+  for (int line = 1; line <= 3; line += 1) {  // loop over lines
+    for (int star = 1; star <= line;
+         star += 1) {  // loop over stars in a single line
+      printf("*");
+    }
+    printf("\n");
+  }
+  return 0;
+}
+</code-runner>
 </body>

@@ -291,7 +291,7 @@ class CodeRunner extends HTMLElement {
  .code-knack-playground .code-knack-input .code-knack-input-title {
 	 color: var(--text, white);
 	 opacity: 0.6;
-	 font-size: 12px;
+	 font-size: 14px;
 	 margin: 0 10px 0 20px;
 	 padding: 4px 0;
 	 font-family: "Metropolis-Medium" -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Helvetica Neue', sans-serif;
@@ -477,6 +477,7 @@ async function getData(html_element) {
 				ansiUpped.loaded = true;
 			}
 
+			const before = Date.now();
 			const res = await fetch('https://emkc.org/api/v2/piston/execute', {
 				method: 'POST',
 				body: JSON.stringify({
@@ -491,6 +492,8 @@ async function getData(html_element) {
 				})
 			});
 			const jsonResult = await res.json();
+			const after = Date.now();
+			html_element.querySelector('.code-knack-output-title').innerText = `Output (ran in ${after - before} ms)`;
 			html_element.querySelector('.code-knack-output-content').style.opacity = 1;
 			// if has compile output - code error
 			if (jsonResult.compile.output) {
