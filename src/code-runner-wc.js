@@ -275,8 +275,8 @@ class CodeRunner extends HTMLElement {
 	 font-size: 14px;
 	 overflow: auto;
 	 white-space: pre-wrap;
+   resize:none;
    min-width:100%;
-   max-width:100%;
    overflow-y: auto;
    outline: none !important;
    border: none;
@@ -392,8 +392,8 @@ class CodeRunner extends HTMLElement {
 
 		// set up the expected output
 		if (this.hasAttribute('output')) {
-			this.querySelector('.code-knack-output-title').innerText = 'Output ( example input)';
-			this.querySelector('#result').innerText = this.getAttribute('output');
+			this.querySelector('.code-knack-output-title').innerHTML = 'Output (example input)';
+			this.querySelector('#result').innerHTML = this.getAttribute('output');
 			this.querySelector('.code-knack-output-content').style.opacity = 0.5;
 		}
 
