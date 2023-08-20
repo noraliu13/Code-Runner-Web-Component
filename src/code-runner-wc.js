@@ -541,7 +541,8 @@ async function getData(html_element) {
 							: '#753131'
 					); // highlight the background as pink on error
 			} else {
-				html_element.querySelector('#result').innerHTML = ansiUpped.ansiUp.ansi_to_html(jsonResult.run.output);
+        // all good
+				html_element.querySelector('#result').innerHTML = ansiUpped.ansiUp.ansi_to_html(jsonResult.run.output).replaceAll(":",":\n"); // manually introduce newline after input prompts 
 				html_element
 					.querySelector('.code-knack-output')
 					.style.setProperty(
