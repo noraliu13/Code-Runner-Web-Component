@@ -171,10 +171,10 @@ class CodeRunner extends HTMLElement {
     /*compress*/
     .code-knack-playground {
 	 position: relative;
-	 background-color: #3a3636;
-	 background-color: var(--bg, #3a3636);
+	 background-color: #edebeb;
+	 background-color: var(--bg, #edebeb);
 	 border-radius: 10px;
-	 border: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+	 border: 1px solid var(--border, rgb(201, 201, 201));
 }
  .code-knack-playground.line-number .CodeMirror {
 	 padding-left: 0px;
@@ -213,7 +213,7 @@ class CodeRunner extends HTMLElement {
 	 background: transparent;
 	 border: none;
 	 border-radius: 0;
-	 color: var(--button-text, wheat);
+	 color: var(--button-text, black);
 	 opacity: 0.8;
 	 outline: none;
 	 display: flex;
@@ -254,7 +254,7 @@ class CodeRunner extends HTMLElement {
 	 width: 100%;
 	 height: 100%;
 	 border-radius: 0px 0px 10px 10px;
-	 background: var(--code-bg, rgba(39, 40, 35, 1));
+	 background: var(--code-bg, white);
 	 font-family: 'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace !important;
 }
  .code-knack-playground .input-output-box {
@@ -268,7 +268,7 @@ class CodeRunner extends HTMLElement {
 	 color: var(--text, white);
 }
  .code-knack-playground .code-knack-input .code-knack-input-content {
-	 background: var(--code-bg, rgb(39, 40, 35, 1));
+	 background: var(--code-bg, white));
 	 color: var(--text, white);
 	 white-space: pre-line;
 	 padding: 8px 12px 8px 20px;
@@ -282,9 +282,9 @@ class CodeRunner extends HTMLElement {
    border: none;
 }
  .code-knack-playground .code-knack-output {
-	 background: var(--bg, #3a3636);
+	 background: var(--bg, #edebeb);
 	 font-family: 'Menlo', 'Roboto Mono', 'Courier New', Courier, monospace !important;
-	 border-top: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+	 border-top: 1px solid var(--border, rgb(201, 201, 201));
    width: 50%;
 }
  .code-knack-playground .code-knack-output .code-knack-output-title, 
@@ -297,7 +297,7 @@ class CodeRunner extends HTMLElement {
 	 font-family: "Metropolis-Medium" -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Helvetica Neue', sans-serif;
 	 border-bottom-width: 1px;
 	 border-bottom-style: solid;
-	 border-bottom-color: rgba(255, 255, 255, 0.06);
+	 border-bottom-color: rgb(201, 201, 201);
 }
  .code-knack-playground .code-knack-output .code-knack-output-content {
 	 color: var(--text, white);
@@ -314,14 +314,14 @@ class CodeRunner extends HTMLElement {
 	 margin: 0 10px;
 	 color: #000;
 	 border-radius: 3px;
-	 border: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+	 border: 1px solid var(--border, rgb(201, 201, 201));
 }
  .code-knack-playground .code-knack-output.html-output .code-knack-output-content .katex .base {
 	 margin: 10px 0;
 }
  .code-knack-playground .code-knack-footer {
-	 background-color: #3a3636;
-	 background-color: var(--bg, #3a3636);
+	 background-color: #edebeb;
+	 background-color: var(--bg, #edebeb);
 	 height: 10px;
 	 border-bottom-left-radius: 10px;
 	 border-bottom-right-radius: 10px;
@@ -350,7 +350,7 @@ class CodeRunner extends HTMLElement {
 		if (!language) {
 			return (this.innerHTML = `${styling}   <!--compress-->  <div>
   
-<pre style="padding: 0px; --bg:rgb(58, 54, 54); --text:rgb(255, 255, 255); --border:rgba(0,0,0,0.3); --code:rgb(255, 255, 255); --code-bg:rgba(39, 40, 35, 1); --title:rgb(255, 255, 255); --button-text:wheat; --button-border:rgba(0,0,0,0.18);"><div class="code-knack-playground "><div class="code-knack-pane"><div class="code-knack-title">Error!</div>
+<pre style="padding: 0px; --bg:#edebeb; --text:black; --border:rgb(201, 201, 201); --code:black; --code-bg:white; --title:rgb(255, 255, 255); --button-text:black; --button-border:rgba(0,0,0,0.18);"><div class="code-knack-playground "><div class="code-knack-pane"><div class="code-knack-title">Error!</div>
   
 </div><div id="codetorun" class="code-knack-text" style="/* display: none; */">Error: Language Attribute Is Missing For Web Component ...
         </div>
@@ -370,7 +370,7 @@ class CodeRunner extends HTMLElement {
     
     <div code-runner-component language=${language}>
   
-<pre style="padding: 0px; --bg:rgb(58, 54, 54); --text:rgb(255, 255, 255); --border:rgba(0,0,0,0.3); --code:rgb(255, 255, 255); --code-bg:rgba(39, 40, 35, 1); --title:rgb(255, 255, 255); --button-text:wheat; --button-border:rgba(0,0,0,0.18);"><div class="code-knack-playground " data-lang="cpp" data-options=""><div class="code-knack-pane"><div class="code-knack-title">${language}</div>
+<pre style="padding: 0px; --bg:#edebeb; --text:black; --border:rgb(201, 201, 201); --code:black; --code-bg:white; --title:black; --button-text:black; --button-border:grey;"><div class="code-knack-playground " data-lang="cpp" data-options=""><div class="code-knack-pane"><div class="code-knack-title">${language}</div>
   <div class="code-knack-mask">Copied to the clipboard.</div>
 <div class="code-knack-ctrl">
 <button class="ck-button run-button" code-runner-button><img src="https://lyricat.github.io/code-knack/demo/lib/code-knack/images/icon-play-dark.svg"><span >run</span></button>
@@ -411,7 +411,7 @@ class CodeRunner extends HTMLElement {
 				// this needs cleaned with a proper error function... @ Dominick?
 				return (this.innerHTML = `${styling}   <!--compress-->  <div>
   
-<pre style="padding: 0px; --bg:rgb(58, 54, 54); --text:rgb(255, 255, 255); --border:rgba(0,0,0,0.3); --code:rgb(255, 255, 255); --code-bg:rgba(39, 40, 35, 1); --title:rgb(255, 255, 255); --button-text:wheat; --button-border:rgba(0,0,0,0.18);"><div class="code-knack-playground "><div class="code-knack-pane"><div class="code-knack-title">Error!</div>
+<pre style="padding: 0px; --bg:rgb(58, 54, 54); --text:black; --border:rgb(201, 201, 201); --code:black; --code-bg:white; --title:black; --button-text:black; --button-border:rgba(0,0,0,0.18);"><div class="code-knack-playground "><div class="code-knack-pane"><div class="code-knack-title">Error!</div>
   
 </div><div id="codetorun" class="code-knack-text" style="/* display: none; */">Error: ${this.getAttribute(
 					'language'
@@ -611,7 +611,7 @@ function handleclick(codeRunner) {
 	// set input to read-only
 	const input = codeRunner.querySelector('.code-knack-input-content');
 	input.setAttribute('readonly', '');
-	input.style.background = 'background-color: var(--bg, #3a3636)';
+	input.style.background = 'background-color: var(--bg, #edebeb)';
 }
 
 // function to load Ace Editor to page
@@ -754,6 +754,7 @@ function CreateAceCodeEditor(html_element, language) {
 		const highlight_lines = html_element.getAttribute('highlight-lines').split(' ');
 		highlight_lines.forEach((l) => session.highlightLines(l - 1, l - 1));
 	}
+
 }
 
 async function CreateAceEditorForPlugin(element, language) {
