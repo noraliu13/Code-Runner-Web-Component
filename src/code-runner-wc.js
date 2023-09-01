@@ -542,7 +542,8 @@ async function getData(html_element) {
 					); // highlight the background as pink on error
 			} else {
         // all good
-				html_element.querySelector('#result').innerHTML = ansiUpped.ansiUp.ansi_to_html(jsonResult.run.output).replaceAll(":",":\n"); // manually introduce newline after input prompts 
+        const regex=/(Enter.*):/gi;
+				html_element.querySelector('#result').innerHTML = ansiUpped.ansiUp.ansi_to_html(jsonResult.run.output).replaceAll(regex,"$1: \n"); // manually introduce newline after input prompts 
 				html_element
 					.querySelector('.code-knack-output')
 					.style.setProperty(
@@ -731,6 +732,10 @@ function CreateAceCodeEditor(html_element, language) {
 	editor.setShowPrintMargin(false);
 	//editor.session.setMode(`ace/mode/${GetVersionForPistonAPI(html_element.getAttribute("language").toLowerCase(), "GETNAME")}`);
 
+  // indent style
+	var session = editor.getSession();
+  session.setTabSize(2);
+  session.setUseWrapMode(true);
 	editor.setValue(text_value);
 
 	editor.clearSelection();
@@ -745,7 +750,6 @@ function CreateAceCodeEditor(html_element, language) {
 	});
 
 	// highlight lines
-	var session = editor.getSession();
 	if (html_element.hasAttribute('highlight-lines')) {
 		const highlight_lines = html_element.getAttribute('highlight-lines').split(' ');
 		highlight_lines.forEach((l) => session.highlightLines(l - 1, l - 1));
