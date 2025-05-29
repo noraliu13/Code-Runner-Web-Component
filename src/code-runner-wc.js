@@ -468,7 +468,7 @@ let ansiUpped = {
 };
 
 // gets data from API and sets the content of #result div
-async function getData(html_element) {
+async function getData(html_element, inputTestcase) {
 	// display the output / results block
 	const result_section = html_element.querySelector('#output_section');
 	result_section.style.display = 'block';
@@ -496,7 +496,7 @@ async function getData(html_element) {
 						}
 					],
 					// stdin: "html_element.querySelector('.code-knack-output-content').value"
-					stdin: "5"
+					stdin: inputTestcase
 
 				})
 			});
