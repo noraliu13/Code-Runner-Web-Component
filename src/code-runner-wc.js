@@ -496,7 +496,7 @@ async function getData(html_element) {
 						}
 					],
 					// stdin: "html_element.querySelector('.code-knack-output-content').value"
-					stdin: "html_element.getAttribute('output')"
+					stdin: "5"
 
 				})
 			});
