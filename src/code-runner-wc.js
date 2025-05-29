@@ -495,7 +495,9 @@ async function getData(html_element) {
 							content: html_element.querySelector('.ace_content').innerText
 						}
 					],
-					stdin: "5"
+					// stdin: "html_element.querySelector('.code-knack-output-content').value"
+					stdin: "html_element.getAttribute('output')"
+
 				})
 			});
 			const jsonResult = await res.json();
