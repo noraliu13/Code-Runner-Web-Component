@@ -708,6 +708,10 @@ function handleclick(codeRunner) {
 	if (!codeRunner.hasAttribute('custom-compiler')) {
 		getData(codeRunner);
 	}
+	// set input to read-only
+	const input = codeRunner.querySelector('.code-knack-input-content');
+	input.setAttribute('readonly', '');
+	input.style.background = 'background-color: var(--bg, #edebeb)';
 }
 
 // function to load Ace Editor to page
