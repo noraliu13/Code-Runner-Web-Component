@@ -495,6 +495,103 @@ async function getData(html_element, inputTestcase) {
 							content: html_element.querySelector('.ace_content').innerText
 						}
 					],
+					stdin: "html_element.querySelector('.code-knack-output-content').value"
+				})
+			});
+			const jsonResult = await res.json();
+			const after = Date.now();
+			html_element.querySelector('.code-knack-output-title').innerText = `Output (ran in ${after - before} ms)`;
+			html_element.querySelector('.code-knack-output-content').style.opacity = 1;
+			// if has compile output - code error
+			if (jsonResult.compile.output) {
+				html_element.querySelector('#result').innerText = `Error: ${jsonResult.compile.output.replace(
+					/(chmod: cannot access \'a\.out\': No such file or directory$)/gm,
+					''
+				)}`;
+				html_element
+					.querySelector('.code-knack-output')
+					.style.setProperty(
+						'--bg',
+						typeof CodeRunner_LightOrDarkMode == 'undefined' || CodeRunner_LightOrDarkMode == 'light'
+							? '#eb9898'
+							: '#753131'
+					); // highlight the background as pink on error
+			} else if (jsonResult.run.signal) {
+				// if has SIGKILL, process ran for too long
+				html_element.querySelector('#result').innerText = `Error: process killed with signal ${jsonResult.run
+					.signal}\n\n (Tip: do you have an infinite loop?)`;
+				html_element
+					.querySelector('.code-knack-output')
+					.style.setProperty(
+						'--bg',
+						typeof CodeRunner_LightOrDarkMode == 'undefined' || CodeRunner_LightOrDarkMode == 'light'
+							? '#eb9898'
+							: '#753131'
+					); // highlight the background as pink on error
+			} else if (jsonResult.run.output.includes('Segmentation fault')) {
+				// if SEGMENTATION_FAULT
+				html_element.querySelector('#result').innerText = `Error: ${jsonResult.run
+					.output}\n\n(Tip: check for stray pointers, dereferencing null, double free...)`;
+				html_element
+					.querySelector('.code-knack-output')
+					.style.setProperty(
+						'--bg',
+						typeof CodeRunner_LightOrDarkMode == 'undefined' || CodeRunner_LightOrDarkMode == 'light'
+							? '#eb9898'
+							: '#753131'
+					); // highlight the background as pink on error
+			} else {
+        // all good
+        const regex=/(Enter.*):/gi;
+				html_element.querySelector('#result').innerHTML = ansiUpped.ansiUp.ansi_to_html(jsonResult.run.output).replaceAll(regex,"$1: \n"); // manually introduce newline after input prompts 
+				html_element
+					.querySelector('.code-knack-output')
+					.style.setProperty(
+						'--bg',
+						typeof CodeRunner_LightOrDarkMode == 'undefined' || CodeRunner_LightOrDarkMode == 'light'
+							? '#edebeb'
+							: '#3a3636'
+					);
+			}
+		} catch (error) {
+			// there was a network error or API is down etc...
+			html_element.querySelector('#result').innerText = error.message;
+		}
+	} else {
+		// user is not connected to internet to fetch API...
+		html_element.querySelector('#result').innerText = 'Error: You must be connected to the internet to use this!';
+	}
+}
+
+
+// gets data from API and sets the content of #result div
+async function runTestCases(html_element, inputTestcase) {
+	// display the output / results block
+	const result_section = html_element.querySelector('#output_section');
+	result_section.style.display = 'block';
+
+	// make sure user is connected to internet  -
+	if (navigator.onLine) {
+		try {
+			// loading ANSI_UP via import
+			if (ansiUpped.loaded != true) {
+				ansiUpped.ansiUp = await import('https://cdn.skypack.dev/ansi_up@5.1.0');
+				ansiUpped.ansiUp = ansiUpped.ansiUp.default;
+				ansiUpped.ansiUp = new ansiUpped.ansiUp();
+				ansiUpped.loaded = true;
+			}
+
+			const before = Date.now();
+			const res = await fetch('https://emkc.org/api/v2/piston/execute', {
+				method: 'POST',
+				body: JSON.stringify({
+					language: html_element.getAttribute('language').toLowerCase(),
+					version: GetVersionForPistonAPI(html_element.getAttribute('language').toLowerCase()),
+					files: [
+						{
+							content: html_element.querySelector('.ace_content').innerText
+						}
+					],
 					// stdin: "html_element.querySelector('.code-knack-output-content').value"
 					stdin: inputTestcase
 
