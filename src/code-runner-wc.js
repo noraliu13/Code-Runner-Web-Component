@@ -495,7 +495,7 @@ async function getData(html_element) {
 							content: html_element.querySelector('.ace_content').innerText
 						}
 					],
-					stdin: "html_element.querySelector('.code-knack-output-content').value"
+					stdin: html_element.querySelector('.code-knack-input-content').value
 				})
 			});
 			const jsonResult = await res.json();
@@ -562,6 +562,7 @@ async function getData(html_element) {
 		html_element.querySelector('#result').innerText = 'Error: You must be connected to the internet to use this!';
 	}
 }
+
 
 
 // gets data from API and sets the content of #result div
@@ -707,10 +708,6 @@ function handleclick(codeRunner) {
 	if (!codeRunner.hasAttribute('custom-compiler')) {
 		getData(codeRunner);
 	}
-	// set input to read-only
-	const input = codeRunner.querySelector('.code-knack-input-content');
-	input.setAttribute('readonly', '');
-	input.style.background = 'background-color: var(--bg, #edebeb)';
 }
 
 // function to load Ace Editor to page
