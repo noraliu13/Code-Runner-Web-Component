@@ -468,7 +468,7 @@ let ansiUpped = {
 };
 
 // gets data from API and sets the content of #result div
-async function getData(html_element, inputTestcase) {
+async function getData(html_element) {
 	// display the output / results block
 	const result_section = html_element.querySelector('#output_section');
 	result_section.style.display = 'block';
