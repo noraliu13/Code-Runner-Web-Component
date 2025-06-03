@@ -571,17 +571,23 @@ async function runTestCases(html_element, inputTestcase) {
 	const result_section = html_element.querySelector('#output_section');
 	result_section.style.display = 'block';
 
-	// make sure user is connected to internet  -
-	if (navigator.onLine) {
-		try {
-			// loading ANSI_UP via import
-			if (ansiUpped.loaded != true) {
-				ansiUpped.ansiUp = await import('https://cdn.skypack.dev/ansi_up@5.1.0');
-				ansiUpped.ansiUp = ansiUpped.ansiUp.default;
-				ansiUpped.ansiUp = new ansiUpped.ansiUp();
-				ansiUpped.loaded = true;
-			}
+	let allOutputs = [];
 
+	// make sure user is connected to internet  -
+	if (!navigator.onLine) {
+		html_element.querySelector('#result').innerText = "Not connected to internet";
+		return allOutputs;
+	}
+
+	try {
+		if (ansiUpped.loaded != true) {
+			ansiUpped.ansiUp = await import('https://cdn.skypack.dev/ansi_up@5.1.0');
+			ansiUpped.ansiUp = ansiUpped.ansiUp.default;
+			ansiUpped.ansiUp = new ansiUpped.ansiUp();
+			ansiUpped.loaded = true;
+		}
+
+		for (let i = 0; i < inputTestcase.length; i++) {
 			const before = Date.now();
 			const res = await fetch('https://emkc.org/api/v2/piston/execute', {
 				method: 'POST',
@@ -593,74 +599,35 @@ async function runTestCases(html_element, inputTestcase) {
 							content: html_element.querySelector('.ace_content').innerText
 						}
 					],
-					// stdin: "html_element.querySelector('.code-knack-output-content').value"
-					stdin: inputTestcase
-
+					stdin: inputTestcase[i]
 				})
 			});
 			const jsonResult = await res.json();
 			const after = Date.now();
 			html_element.querySelector('.code-knack-output-title').innerText = `Output (ran in ${after - before} ms)`;
 			html_element.querySelector('.code-knack-output-content').style.opacity = 1;
-			// if has compile output - code error
+
+			let output;
+
 			if (jsonResult.compile.output) {
-				html_element.querySelector('#result').innerText = `Error: ${jsonResult.compile.output.replace(
-					/(chmod: cannot access \'a\.out\': No such file or directory$)/gm,
-					''
-				)}`;
-				html_element
-					.querySelector('.code-knack-output')
-					.style.setProperty(
-						'--bg',
-						typeof CodeRunner_LightOrDarkMode == 'undefined' || CodeRunner_LightOrDarkMode == 'light'
-							? '#eb9898'
-							: '#753131'
-					); // highlight the background as pink on error
+				output = `Error: ${jsonResult.compile.output.replace(/(chmod: cannot access \'a\.out\': No such file or directory$)/gm, '')}`;
 			} else if (jsonResult.run.signal) {
-				// if has SIGKILL, process ran for too long
-				html_element.querySelector('#result').innerText = `Error: process killed with signal ${jsonResult.run
-					.signal}\n\n (Tip: do you have an infinite loop?)`;
-				html_element
-					.querySelector('.code-knack-output')
-					.style.setProperty(
-						'--bg',
-						typeof CodeRunner_LightOrDarkMode == 'undefined' || CodeRunner_LightOrDarkMode == 'light'
-							? '#eb9898'
-							: '#753131'
-					); // highlight the background as pink on error
+				output = `Error: process killed with signal ${jsonResult.run.signal}\n\n (Tip: do you have an infinite loop?)`;
 			} else if (jsonResult.run.output.includes('Segmentation fault')) {
-				// if SEGMENTATION_FAULT
-				html_element.querySelector('#result').innerText = `Error: ${jsonResult.run
-					.output}\n\n(Tip: check for stray pointers, dereferencing null, double free...)`;
-				html_element
-					.querySelector('.code-knack-output')
-					.style.setProperty(
-						'--bg',
-						typeof CodeRunner_LightOrDarkMode == 'undefined' || CodeRunner_LightOrDarkMode == 'light'
-							? '#eb9898'
-							: '#753131'
-					); // highlight the background as pink on error
+				output = `Error: ${jsonResult.run.output}\n\n(Tip: check for stray pointers, dereferencing null, double free...)`;
 			} else {
-        // all good
-        const regex=/(Enter.*):/gi;
-				html_element.querySelector('#result').innerHTML = ansiUpped.ansiUp.ansi_to_html(jsonResult.run.output).replaceAll(regex,"$1: \n"); // manually introduce newline after input prompts 
-				html_element
-					.querySelector('.code-knack-output')
-					.style.setProperty(
-						'--bg',
-						typeof CodeRunner_LightOrDarkMode == 'undefined' || CodeRunner_LightOrDarkMode == 'light'
-							? '#edebeb'
-							: '#3a3636'
-					);
+				const regex = /(Enter.*):/gi;
+				output = ansiUpped.ansiUp.ansi_to_html(jsonResult.run.output).replaceAll(regex, "$1:\n");
 			}
-		} catch (error) {
-			// there was a network error or API is down etc...
-			html_element.querySelector('#result').innerText = error.message;
+
+			allOutputs.push(output);
 		}
-	} else {
-		// user is not connected to internet to fetch API...
-		html_element.querySelector('#result').innerText = 'Error: You must be connected to the internet to use this!';
+	} catch (error) {
+		html_element.querySelector('#result').innerText = error.message;
+		return [`Error: ${error.message}`];
 	}
+
+	return allOutputs;
 }
 
 /// Provides the version to use for Piston API automatically!
@@ -672,7 +639,7 @@ function GetVersionForPistonAPI(string, getName) {
 			return 'undefined';
 		}
 
-		if (string == data[key].language) {
+		if (stiring == data[key].language) {
 			// console.log(`found ${data[key].version} for ${string}` )
 			if (getName) {
 				return data[key].language;
