@@ -639,7 +639,7 @@ function GetVersionForPistonAPI(string, getName) {
 			return 'undefined';
 		}
 
-		if (stiring == data[key].language) {
+		if (string == data[key].language) {
 			// console.log(`found ${data[key].version} for ${string}` )
 			if (getName) {
 				return data[key].language;
