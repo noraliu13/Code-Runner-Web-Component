@@ -629,7 +629,7 @@ async function runTestCases(html_element, inputTestcase) {
 		// html_element.querySelector('#result').innerText = error.message;
 		// return [`Error: ${error.message}`];
 		let errrorMessage = "Please try again";
-		return errrorMessage;
+		allOutputs.push(errrorMessage);
 	}
 
 	return allOutputs;
