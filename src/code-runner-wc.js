@@ -567,9 +567,8 @@ async function getData(html_element) {
 
 // gets data from API and sets the content of #result div
 async function runTestCases(html_element, inputTestcase, messageElement) {
-	// display the output / results block
-	const result_section = html_element.querySelector('#output_section');
-	result_section.style.display = 'block';
+
+	messageElement.innerHTML = ""; 
 
 	let progressText = document.createElement('div');
 	progressText.id = "progressText";
