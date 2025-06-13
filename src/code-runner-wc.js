@@ -566,7 +566,7 @@ async function getData(html_element) {
 
 
 // gets data from API and sets the content of #result div
-async function runTestCases(html_element, inputTestcase) {
+async function runTestCases(html_element, inputTestcase, messageElement) {
 	// display the output / results block
 	const result_section = html_element.querySelector('#output_section');
 	result_section.style.display = 'block';
@@ -604,8 +604,8 @@ async function runTestCases(html_element, inputTestcase) {
 			});
 			const jsonResult = await res.json();
 			const after = Date.now();
-			html_element.querySelector('.code-knack-output-title').innerText = `Output (ran in ${after - before} ms)`;
-			html_element.querySelector('.code-knack-output-content').style.opacity = 1;
+			// html_element.querySelector('.code-knack-output-title').innerText = `Output (ran in ${after - before} ms)`;
+			// html_element.querySelector('.code-knack-output-content').style.opacity = 1;
 
 			let output;
 
@@ -623,6 +623,10 @@ async function runTestCases(html_element, inputTestcase) {
 			allOutputs.push(output);
 
 			// 1 second pause
+			messageElement.innerHTML = `Running testcase ${i + 1}/ of ${inputTestcase.length}`;
+			messageElement.style.color = "grey";
+			messageElement.style.fontWeight = "bold";
+			
 			await new Promise(resolve => setTimeout(resolve, 1000));
 		}
 	} catch (error) {
