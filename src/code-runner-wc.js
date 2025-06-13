@@ -623,7 +623,7 @@ async function runTestCases(html_element, inputTestcase) {
 			allOutputs.push(output);
 
 			// 1 second pause
-			await new Promise(resolve => setTimeout(resolve, 1000));
+			// await new Promise(resolve => setTimeout(resolve, 1000));
 		}
 	} catch (error) {
 		// html_element.querySelector('#result').innerText = error.message;
