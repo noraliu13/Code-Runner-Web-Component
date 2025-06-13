@@ -571,6 +571,23 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	const result_section = html_element.querySelector('#output_section');
 	result_section.style.display = 'block';
 
+	let progressText = document.createElement('div');
+	progressText.id = "progressText";
+	messageElement.appendChild(progressText);
+
+	const progressContainer = document.createElement("div");
+	progressContainer.style.width = "100%";
+	progressContainer.style.backgroundColor = "grey";
+
+	const progressBar = document.createElement("div");
+	progressBar.style.width = "1%";
+	progressBar.style.height = "20px";
+	progressBar.style.backgroundColor = "green";
+	progressBar.style.transition = "width 0.3s ease";
+
+	progressContainer.appendChild(progressBar);
+    messageElement.appendChild(progressContainer);
+	
 	let allOutputs = [];
 
 	// make sure user is connected to internet  -
@@ -588,6 +605,14 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 		}
 
 		for (let i = 0; i < inputTestcase.length; i++) {
+
+			progressText.innerText = `Running testcase ${i + 1} of ${inputTestcase.length}...`;
+			progressText.style.color = "grey";
+			progressText.style.fontWeight = "bold";
+
+			const percent = ((i + 1) / inputTestcase.length) * 100;
+			progressBar.style.width = percent + "%";
+
 			const before = Date.now();
 			const res = await fetch('https://emkc.org/api/v2/piston/execute', {
 				method: 'POST',
@@ -622,11 +647,7 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 
 			allOutputs.push(output);
 
-			// 1 second pause
-			messageElement.innerHTML = `Running testcase ${i + 1}/ of ${inputTestcase.length}`;
-			messageElement.style.color = "grey";
-			messageElement.style.fontWeight = "bold";
-			
+			// 1 second pause			
 			await new Promise(resolve => setTimeout(resolve, 1000));
 		}
 	} catch (error) {
