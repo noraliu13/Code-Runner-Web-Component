@@ -583,6 +583,7 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	progressBar.style.height = "20px";
 	progressBar.style.backgroundColor = "green";
 	progressBar.style.transition = "width 1s ease";
+	progressBar.style.width = "0%"; 
 
 	progressContainer.appendChild(progressBar);
     messageElement.appendChild(progressContainer);
@@ -606,12 +607,12 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 
 		for (let i = 0; i < inputTestcase.length; i++) {
 
-			const percent = (i / inputTestcase.length) * 100;
-			progressBar.style.width = percent + "%";
-
 			progressText.innerText = `Running testcase ${i + 1} of ${inputTestcase.length}...`;
 			progressText.style.color = "grey";
 			progressText.style.fontWeight = "bold";
+
+			const percent = ((i + 1) / inputTestcase.length) * 100;
+			progressBar.style.width = percent + "%";
 
 			const before = Date.now();
 			const res = await fetch('https://emkc.org/api/v2/piston/execute', {
@@ -647,9 +648,6 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 			// X second(s) pause			
 			await new Promise(resolve => setTimeout(resolve, pause));
 		}
-
-		progressBar.style.width = "100%";
-
 	} catch (error) {
 		let errrorMessage = "Please try again";
 		allOutputs.push(errrorMessage);
