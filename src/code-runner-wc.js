@@ -578,11 +578,11 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	progressContainer.style.width = "100%";
 	progressContainer.style.backgroundColor = "grey";
 
-	progressBar.style.transition = "none"; // resets animation
-
 	const progressBar = document.createElement("div");
 	progressBar.style.height = "20px";
 	progressBar.style.backgroundColor = "green";
+
+	progressBar.style.transition = "none"; // resets animation
 
 	await new Promise(resolve =>{
 		requestAnimationFrame(() => {
