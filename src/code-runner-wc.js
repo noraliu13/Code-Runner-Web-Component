@@ -594,7 +594,7 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	// // X second(s) pause			
 	// await new Promise(resolve => setTimeout(resolve, pause));
 	
-	progressBar.style.transition = "width 0.5s ease";
+	progressBar.style.transition = "width 0.3s ease";
 	
 
 	// make sure user is connected to internet  -
