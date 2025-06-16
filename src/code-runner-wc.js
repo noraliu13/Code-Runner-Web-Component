@@ -591,8 +591,8 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	let allOutputs = [];
 	const pause = 1000;
 
-	// X second(s) pause			
-	await new Promise(resolve => setTimeout(resolve, pause));
+	// // X second(s) pause			
+	// await new Promise(resolve => setTimeout(resolve, pause));
 	
 	progressBar.style.transition = "width 1s ease";
 
@@ -615,6 +615,9 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 			progressText.innerText = `Running testcase ${i + 1} of ${inputTestcase.length}...`;
 			progressText.style.color = "grey";
 			progressText.style.fontWeight = "bold";
+
+			// X second(s) pause			
+			await new Promise(resolve => setTimeout(resolve, pause));
 
 			const percent = ((i + 1) / inputTestcase.length) * 100;
 			progressBar.style.width = percent + "%";
@@ -648,9 +651,6 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 			}
 
 			allOutputs.push(output);
-
-			// X second(s) pause			
-			await new Promise(resolve => setTimeout(resolve, pause));
 
 		}
 	} catch (error) {
