@@ -582,12 +582,12 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	progressBar.style.width = "1%";
 	progressBar.style.height = "20px";
 	progressBar.style.backgroundColor = "green";
-	progressBar.style.transition = "width 0.3s ease";
 
 	progressContainer.appendChild(progressBar);
     messageElement.appendChild(progressContainer);
 	
 	let allOutputs = [];
+	const pause = 1000;
 
 	// make sure user is connected to internet  -
 	if (!navigator.onLine) {
@@ -627,9 +627,6 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 				})
 			});
 			const jsonResult = await res.json();
-			const after = Date.now();
-			// html_element.querySelector('.code-knack-output-title').innerText = `Output (ran in ${after - before} ms)`;
-			// html_element.querySelector('.code-knack-output-content').style.opacity = 1;
 
 			let output;
 
@@ -646,8 +643,8 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 
 			allOutputs.push(output);
 
-			// 1 second pause			
-			await new Promise(resolve => setTimeout(resolve, 1000));
+			// X second(s) pause			
+			await new Promise(resolve => setTimeout(resolve, pause));
 		}
 	} catch (error) {
 		let errrorMessage = "Please try again";
