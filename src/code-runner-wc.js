@@ -585,16 +585,16 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	progressBar.style.transition = "none"; // resets animation
 	progressBar.style.width = "0%"; 
 
-	const pause = 1000;
-	// X second(s) pause			
-	await new Promise(resolve => setTimeout(resolve, pause));
-	
-	progressBar.style.transition = "width 1s ease";
-
 	progressContainer.appendChild(progressBar);
     messageElement.appendChild(progressContainer);
 	
 	let allOutputs = [];
+	const pause = 1000;
+
+	// X second(s) pause			
+	await new Promise(resolve => setTimeout(resolve, pause));
+	
+	progressBar.style.transition = "width 1s ease";
 
 	// make sure user is connected to internet  -
 	if (!navigator.onLine) {
