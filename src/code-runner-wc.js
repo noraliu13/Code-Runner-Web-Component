@@ -575,7 +575,6 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	messageElement.appendChild(progressText);
 
 	const progressContainer = document.createElement("div");
-	progressContainer.style.width = "100%";
 	progressContainer.style.backgroundColor = "grey";
 
 	const progressBar = document.createElement("div");
