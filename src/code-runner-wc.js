@@ -613,22 +613,16 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 
 		for (let i = 0; i < inputTestcase.length; i++) {
 
-			if (i == 0){
-				progressText.innerText = `Running testcase ${i + 1} of ${inputTestcase.length}...`;
-				progressText.style.color = "grey";
-				progressText.style.fontWeight = "bold";
-			}
-			// X second(s) pause			
-			await new Promise(resolve => setTimeout(resolve, pause));
-
-			if (i != 0){
-				progressText.innerText = `Running testcase ${i + 1} of ${inputTestcase.length}...`;
-				progressText.style.color = "grey";
-				progressText.style.fontWeight = "bold";
-			}
+			progressText.innerText = `Running testcase ${i + 1} of ${inputTestcase.length}...`;
+			progressText.style.color = "grey";
+			progressText.style.fontWeight = "bold";
 
 			const percent = ((i + 1) / inputTestcase.length) * 100;
 			progressBar.style.width = percent + "%";
+
+			// X second(s) pause			
+			await new Promise(resolve => setTimeout(resolve, pause));
+
 
 			const res = await fetch('https://emkc.org/api/v2/piston/execute', {
 				method: 'POST',
