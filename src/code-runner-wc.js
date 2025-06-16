@@ -594,7 +594,7 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	// // X second(s) pause			
 	// await new Promise(resolve => setTimeout(resolve, pause));
 	
-	progressBar.style.transition = "width 1s ease";
+	progressBar.style.transition = "width 0.5s ease";
 	
 
 	// make sure user is connected to internet  -
@@ -617,11 +617,11 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 			progressText.style.color = "grey";
 			progressText.style.fontWeight = "bold";
 
+			// X second(s) pause			
+			await new Promise(resolve => setTimeout(resolve, pause));
+
 			const percent = ((i + 1) / inputTestcase.length) * 100;
 			progressBar.style.width = percent + "%";
-
-			// X second(s) pause			
-			if (i !== 0) await new Promise(resolve => setTimeout(resolve, pause));
 
 			const res = await fetch('https://emkc.org/api/v2/piston/execute', {
 				method: 'POST',
