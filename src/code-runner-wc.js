@@ -583,9 +583,11 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	progressBar.style.backgroundColor = "green";
 	progressBar.style.transition = "width 1s ease";
 
-	requestAnimationFrame(() => {
-		progressBar.style.width = "0%"; 
-	});
+	// requestAnimationFrame(() => {
+	progressBar.style.width = "0%"; 
+	// });
+
+	await new Promise(resolve => setTimeout(resolve, pause));
 
 	progressContainer.appendChild(progressBar);
     messageElement.appendChild(progressContainer);
