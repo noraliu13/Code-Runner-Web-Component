@@ -611,9 +611,6 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 			progressText.style.color = "grey";
 			progressText.style.fontWeight = "bold";
 
-			const percent = ((i + 1) / inputTestcase.length) * 100;
-			progressBar.style.width = percent + "%";
-
 			const before = Date.now();
 			const res = await fetch('https://emkc.org/api/v2/piston/execute', {
 				method: 'POST',
@@ -647,6 +644,10 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 
 			// X second(s) pause			
 			await new Promise(resolve => setTimeout(resolve, pause));
+
+			const percent = ((i + 1) / inputTestcase.length) * 100;
+			progressBar.style.width = percent + "%";
+
 		}
 	} catch (error) {
 		let errrorMessage = "Please try again";
