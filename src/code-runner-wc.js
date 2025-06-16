@@ -582,7 +582,7 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	progressBar.style.width = "1%";
 	progressBar.style.height = "20px";
 	progressBar.style.backgroundColor = "green";
-	progressBar.style.transition = "width 1s ease"
+	progressBar.style.transition = "width 1s ease";
 
 	progressContainer.appendChild(progressBar);
     messageElement.appendChild(progressContainer);
