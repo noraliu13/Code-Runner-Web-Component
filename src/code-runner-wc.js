@@ -621,8 +621,7 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 			progressBar.style.width = percent + "%";
 
 			// X second(s) pause			
-			await new Promise(resolve => setTimeout(resolve, pause));
-
+			if (i !== 0) await new Promise(resolve => setTimeout(resolve, pause));
 
 			const res = await fetch('https://emkc.org/api/v2/piston/execute', {
 				method: 'POST',
