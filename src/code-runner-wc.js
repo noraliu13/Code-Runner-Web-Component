@@ -581,8 +581,6 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	const progressBar = document.createElement("div");
 	progressBar.style.height = "20px";
 	progressBar.style.backgroundColor = "green";
-
-	progressBar.style.transition = "none"; // resets animation
 	progressBar.style.width = "0%"; 
 
 	progressContainer.appendChild(progressBar);
@@ -590,13 +588,9 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	
 	let allOutputs = [];
 	const pause = 1000;
-
-	// // X second(s) pause			
-	// await new Promise(resolve => setTimeout(resolve, pause));
 	
-	progressBar.style.transition = "width 0.3s ease";
+	progressBar.style.transition = "width 1s ease";
 	
-
 	// make sure user is connected to internet  -
 	if (!navigator.onLine) {
 		html_element.querySelector('#result').innerText = "Not connected to internet";
@@ -616,9 +610,6 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 			progressText.innerText = `Running testcase ${i + 1} of ${inputTestcase.length}...`;
 			progressText.style.color = "grey";
 			progressText.style.fontWeight = "bold";
-
-			// X second(s) pause			
-			await new Promise(resolve => setTimeout(resolve, pause));
 
 			const percent = ((i + 1) / inputTestcase.length) * 100;
 			progressBar.style.width = percent + "%";
@@ -652,6 +643,9 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 			}
 
 			allOutputs.push(output);
+			
+			// X second(s) pause			
+			await new Promise(resolve => setTimeout(resolve, pause));
 
 		}
 	} catch (error) {
