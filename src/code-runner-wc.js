@@ -595,6 +595,7 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	// await new Promise(resolve => setTimeout(resolve, pause));
 	
 	progressBar.style.transition = "width 1s ease";
+	
 
 	// make sure user is connected to internet  -
 	if (!navigator.onLine) {
@@ -611,13 +612,20 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 		}
 
 		for (let i = 0; i < inputTestcase.length; i++) {
+
+			if (i == 0){
+				progressText.innerText = `Running testcase ${i + 1} of ${inputTestcase.length}...`;
+				progressText.style.color = "grey";
+				progressText.style.fontWeight = "bold";
+			}
 			// X second(s) pause			
 			await new Promise(resolve => setTimeout(resolve, pause));
 
-			progressText.innerText = `Running testcase ${i + 1} of ${inputTestcase.length}...`;
-			progressText.style.color = "grey";
-			progressText.style.fontWeight = "bold";
-
+			if (i != 0){
+				progressText.innerText = `Running testcase ${i + 1} of ${inputTestcase.length}...`;
+				progressText.style.color = "grey";
+				progressText.style.fontWeight = "bold";
+			}
 
 			const percent = ((i + 1) / inputTestcase.length) * 100;
 			progressBar.style.width = percent + "%";
