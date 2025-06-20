@@ -568,6 +568,9 @@ async function getData(html_element) {
 // gets data from API and sets the content of #result div
 async function runTestCases(html_element, inputTestcase, messageElement) {
 
+	const existingProgressContainer = messageElement.querySelector('.progress-container');
+	if (existingProgressContainer) oldProgressContainer.remove();
+
 	messageElement.innerHTML = ""; 
 
 	let progressText = document.createElement('div');
@@ -578,18 +581,19 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	progressContainer.style.backgroundColor = "grey";
 
 	const progressBar = document.createElement("div");
+	progressContainer.classList.add("progress-container");  
 	progressBar.style.height = "20px";
 	progressBar.style.backgroundColor = "green";
 	progressBar.style.width = "0%"; 
+
+	progressBar.style.transition = "width 1s ease";
 
 	progressContainer.appendChild(progressBar);
     messageElement.appendChild(progressContainer);
 	
 	let allOutputs = [];
 	const pause = 1000;
-	
-	progressBar.style.transition = "width 1s ease";
-	
+		
 	// make sure user is connected to internet  -
 	if (!navigator.onLine) {
 		html_element.querySelector('#result').innerText = "Not connected to internet";
