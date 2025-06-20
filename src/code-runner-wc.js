@@ -571,6 +571,8 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 	const oldProgressContainer = messageElement.querySelector('.progress-container');
 	if (oldProgressContainer) oldProgressContainer.remove();
 
+	messageElement.innerHTML = "";
+
 	progressText = document.createElement('div');
 	progressText.style.color = "grey";
 	progressText.style.fontWeight = "bold";
