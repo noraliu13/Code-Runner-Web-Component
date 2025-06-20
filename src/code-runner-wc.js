@@ -568,28 +568,28 @@ async function getData(html_element) {
 // gets data from API and sets the content of #result div
 async function runTestCases(html_element, inputTestcase, messageElement) {
 
-	const existingProgressContainer = messageElement.querySelector('.progress-container');
-	if (existingProgressContainer) oldProgressContainer.remove();
-
-	messageElement.innerHTML = ""; 
-
-	let progressText = document.createElement('div');
-	progressText.id = "progressText";
-	messageElement.appendChild(progressText);
+	const oldProgressContainer = messageElement.querySelector('.progress-container');
+	if (oldProgressContainer) oldProgressContainer.remove();
 
 	const progressContainer = document.createElement("div");
+	progressContainer.classList.add("progress-container");
+	progressContainer.style.width = "100%";
 	progressContainer.style.backgroundColor = "grey";
 
 	const progressBar = document.createElement("div");
-	progressContainer.classList.add("progress-container");  
 	progressBar.style.height = "20px";
 	progressBar.style.backgroundColor = "green";
-	progressBar.style.width = "0%"; 
 
-	progressBar.style.transition = "width 1s ease";
+	progressBar.style.transition = "none";
+	progressBar.style.width = "0%";
 
 	progressContainer.appendChild(progressBar);
-    messageElement.appendChild(progressContainer);
+	messageElement.appendChild(progressContainer);
+
+	// force reflow so browser registers width=0 without transition
+	progressBar.offsetWidth;  // reading offsetWidth forces style recalculation
+
+	progressBar.style.transition = "width 1s ease";
 	
 	let allOutputs = [];
 	const pause = 1000;
