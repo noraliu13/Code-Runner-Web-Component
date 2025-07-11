@@ -566,7 +566,8 @@ async function getData(html_element) {
 
 
 // gets data from API and sets the content of #result div
-async function runTestCases(html_element, inputTestcase, messageElement) {
+async function runTestCases(html_element, inputTestcase, messageElement, codeToRun = null) {
+
 
 	const oldProgressContainer = messageElement.querySelector('.progress-container');
 	if (oldProgressContainer) oldProgressContainer.remove();
@@ -631,7 +632,7 @@ async function runTestCases(html_element, inputTestcase, messageElement) {
 					version: GetVersionForPistonAPI(html_element.getAttribute('language').toLowerCase()),
 					files: [
 						{
-							content: html_element.querySelector('.ace_content').innerText
+							content: codeToRun || html_element.querySelector('.ace_content').innerText
 						}
 					],
 					stdin: inputTestcase[i]
