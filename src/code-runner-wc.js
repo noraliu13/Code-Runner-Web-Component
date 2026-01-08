@@ -839,7 +839,10 @@ function CreateAceCodeEditor(html_element, language) {
   // indent style
 	var session = editor.getSession();
   session.setTabSize(2);
-  session.setUseWrapMode(true);
+//   session.setUseWrapMode(true);
+	session.setUseWrapMode(false);
+	editor.setOption("hScrollBarAlwaysVisible", true);
+
 	editor.setValue(text_value);
 
 	editor.clearSelection();
