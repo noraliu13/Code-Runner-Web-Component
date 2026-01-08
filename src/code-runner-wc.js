@@ -834,27 +834,32 @@ function CreateAceCodeEditor(html_element, language) {
 		// } ////
 	}
 	editor.setShowPrintMargin(false);
-	//editor.session.setMode(`ace/mode/${GetVersionForPistonAPI(html_element.getAttribute("language").toLowerCase(), "GETNAME")}`);
 
-  // indent style
+	// indent style
 	var session = editor.getSession();
 	session.setTabSize(2);
 	session.setUseWrapMode(false);
-	editor.setOption("hScrollBarAlwaysVisible", true);
-	editor.setOption("vScrollBarAlwaysVisible", false);
-
-	editor.setValue(text_value);
-
-	editor.clearSelection();
-	/// This will set editor to content length
 
 	/// This will set editor to auto-expand
-	//editor.setOptions({
-	//  maxLines: Infinity
-	// });
-	editor.setOptions({
-		maxLines: Infinity
-	});
+    editor.setOptions({
+        maxLines: Infinity,                             
+        minLines: 1,
+        showPrintMargin: false,
+        displayIndentGuides: false
+    });
+
+    // Vertical Scroll
+    editor.renderer.scrollBarV.element.style.display = "none";
+    editor.renderer.setScrollTop(0);
+    editor.renderer.scrollTop = 0;
+    editor.renderer.scroller.style.overflowY = 'hidden';
+    editor.renderer.scroller.style.height = 'auto';    
+
+    // Horizontal Scroll
+    editor.renderer.scroller.style.overflowX = 'auto';
+
+    // Remove vertical padding
+    editor.renderer.setPadding(0);
 
 	// highlight lines
 	if (html_element.hasAttribute('highlight-lines')) {
@@ -863,6 +868,7 @@ function CreateAceCodeEditor(html_element, language) {
 	}
 
 }
+
 
 async function CreateAceEditorForPlugin(element, language) {
 	// make sure the editor is only set for non-terminal.
