@@ -485,7 +485,7 @@ async function getData(html_element) {
 			}
 
 			const before = Date.now();
-			const res = await fetch('https://emkc.org/api/v2/piston/execute', {
+			const res = await fetch('/.netlify/functions/run-code', {
 				method: 'POST',
 				body: JSON.stringify({
 					language: html_element.getAttribute('language').toLowerCase(),
@@ -625,7 +625,7 @@ async function runTestCases(html_element, inputTestcase, messageElement, codeToR
 			const percent = ((i + 1) / inputTestcase.length) * 100;
 			progressBar.style.width = percent + "%";
 
-			const res = await fetch('https://emkc.org/api/v2/piston/execute', {
+			const res = await fetch('/.netlify/functions/run-code', {
 				method: 'POST',
 				body: JSON.stringify({
 					language: html_element.getAttribute('language').toLowerCase(),
